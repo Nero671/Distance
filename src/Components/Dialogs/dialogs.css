@@ -1,0 +1,72 @@
+.dialog-post {
+    width: 100%;
+    height: auto;
+}
+
+.dialogs-title {
+    font-size: 24px;
+    font-weight: 600;
+    margin-bottom: 15px;
+    text-transform: uppercase;
+}
+
+.dialogs-content {
+    display: flex;
+}
+
+.dialog-user-list {
+    padding-right: 43px;
+    border-right: 1px solid #0050B3;
+    flex-basis: 19%;
+}
+
+.dialog-user-name {
+    list-style: inside;
+    padding: 20px 0;
+    cursor: pointer;
+}
+
+.dialog-messages {
+    padding-left: 15px;
+    flex-basis: 81%;
+}
+
+.dialog-user-name > .active {
+    color: #003A8C;
+    font-size: 21px;
+}
+
+.dialog-user {
+    display: flex;
+    align-items: center;
+    padding: 20px 0;
+}
+
+.dialog-user__profile {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 60px;
+}
+
+.dialog-user__profile > .user-name {
+    margin-left: 0;
+}
+
+.dialog-user__text {
+    width: 515px;
+    padding: 20px 15px;
+    border: 1px solid #cecece;
+    border-radius: 10px;
+    margin-left: 5px;
+}
+
+/*.dialog-user::before {*/
+/*    content: '';*/
+/*    width: 30px;*/
+/*    height: 30px;*/
+/*    border-radius: 50%;*/
+/*    display: flex;*/
+/*    background: url("../../image/user.svg") no-repeat center top / cover;*/
+/*    margin-right: 20px;*/
+/*}*/

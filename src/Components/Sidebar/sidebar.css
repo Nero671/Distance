@@ -1,0 +1,75 @@
+.menu-sidebar {
+    max-width: 192px;
+    margin-top: 18px;
+    margin-right: 18px;
+    width: 100%;
+}
+
+.menu-sidebar .user {
+    padding-left: 8px;
+}
+
+.menu-sidebar .user-name {
+    font-size: 14px;
+    line-height: 22px;
+    color: #262626;
+    font-weight: normal;
+}
+
+.nav-group {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-top: 12px;
+    margin-bottom: 24px;
+}
+
+.group-link {
+    display: flex;
+    align-items: center;
+    padding: 4px 8px;
+    border-radius: 4px;
+    text-decoration: none;
+    color: #595959;
+    line-height: 22px;
+    font-weight: normal;
+    margin-top: 10px;
+}
+
+.group-link:last-child {
+    margin-top: 40px;
+}
+
+.group-link.active {
+    background-color: #fff;
+    color: #262626;
+    font-weight: 600;
+}
+
+.group-text {
+    margin-left: 8px;
+}
+
+.nav-title {
+    padding-left: 10px;
+    color: #262626;
+    font-size: 12px;
+    line-height: 20px;
+    font-weight: 600;
+    margin-top: 0px;
+    margin-bottom: 4px;
+}
+
+.fa-sort-down {
+    font-size: 20px;
+    color: #BFBFBF;
+    margin-left: 6.5px;
+    margin-right: 6px;
+    padding-bottom: 10px;
+}
+
+.sidebar-avatar {
+    object-fit: cover;
+    width: 24px;
+    height: 24px;
+}

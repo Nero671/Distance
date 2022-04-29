@@ -3,8 +3,10 @@ import "./profile.css";
 import Gift from "../../image/gift.svg";
 import User from "../../image/user.svg";
 import {UserInfoList} from "../UserInfoList/UserInfoList";
+import {Friends} from "./Friends/Friends";
 
-export const Profile = () => {
+export const Profile = ({ friend }) => {
+    let friendList = friend.map((item, index) => '<Friends key={index} name={item.name} />');
     return (
         <div className="user-wrapper">
             <div className="post">
@@ -32,6 +34,7 @@ export const Profile = () => {
                     </div>
                 </div>
             </div>
+            {friendList}
         </div>
     )
 }

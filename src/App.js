@@ -3,11 +3,19 @@ import './App.css';
 import {Header} from "./Components/Header/Header";
 import {Main} from "./Components/Main/Main";
 
-const App = () => {
+const App = ({ posts, messages, dialog, friend }) => {
+
+
+
   return (
     <div className="app-wrapper">
       <Header/>
-      <Main/>
+      <Main
+          posts={posts}
+          messages={messages}
+          dialog={dialog}
+          friend={friend}
+      />
     </div>
   );
 }

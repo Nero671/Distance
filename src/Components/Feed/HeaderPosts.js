@@ -4,12 +4,12 @@ import Photo from "../../image/photo.svg";
 import Friend from "../../image/tagFriend.svg";
 import Feelings from "../../image/feelings.svg";
 
-export const changeTextarea = function() {
-    const inputPost = document.querySelector('.input-post').value;
-}
-
-
 export const HeaderPosts = () => {
+    let newPostElement = React.createRef();
+
+    const addPost = () => {
+        const postValue = newPostElement.current.value;
+    }
     return (
         <div className="create-post">
             <div className="header-post">
@@ -18,7 +18,7 @@ export const HeaderPosts = () => {
                 </h4>
             </div>
             <div className="body-post">
-                <textarea className="input-post" placeholder="What’s on your mind, Stanislav?"></textarea>
+                <textarea ref={newPostElement} className="input-post" placeholder="What’s on your mind, Stanislav?"></textarea>
             </div>
             <div className="footer-post">
                 <button className="tag">
@@ -39,7 +39,7 @@ export const HeaderPosts = () => {
                           Feeling/Actv...
                     </span>
                 </button>
-                <button className="tag" onClick={changeTextarea}>
+                <button className="tag" onClick={addPost}>
                         <span className="button-text">
                           Send
                         </span>

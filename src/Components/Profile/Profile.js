@@ -6,7 +6,7 @@ import {UserInfoList} from "../UserInfoList/UserInfoList";
 import {Friends} from "./Friends/Friends";
 
 export const Profile = ({ friend }) => {
-    let friendList = friend.map((item, index) => '<Friends key={index} name={item.name} />');
+    let friendList = friend.map((item, index) => <Friends key={index} name={item.userName} />);
     return (
         <div className="user-wrapper">
             <div className="post">
@@ -34,7 +34,14 @@ export const Profile = ({ friend }) => {
                     </div>
                 </div>
             </div>
-            {friendList}
+            <div className="post">
+                <h2 className="friend-title">
+                    Friends
+                </h2>
+                <div className="friends-list">
+                    {friendList}
+                </div>
+            </div>
         </div>
     )
 }

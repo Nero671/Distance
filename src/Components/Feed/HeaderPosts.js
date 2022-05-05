@@ -3,12 +3,22 @@ import "./feed.css";
 import Photo from "../../image/photo.svg";
 import Friend from "../../image/tagFriend.svg";
 import Feelings from "../../image/feelings.svg";
+import Send from "../../image/send.svg";
+import {addPost} from "../../index";
 
 export const HeaderPosts = () => {
     let newPostElement = React.createRef();
 
-    const addPost = () => {
-        const postValue = newPostElement.current.value;
+    const addNewPost = () => {
+        let postValue = newPostElement.current.value;
+        if (postValue !== '') {
+            addPost(postValue);
+            newPostElement.current.value = ''
+        } else {
+            return false
+        }
+
+
     }
     return (
         <div className="create-post">
@@ -39,10 +49,11 @@ export const HeaderPosts = () => {
                           Feeling/Actv...
                     </span>
                 </button>
-                <button className="tag" onClick={addPost}>
-                        <span className="button-text">
-                          Send
-                        </span>
+                <button className="tag" onClick={addNewPost}>
+                    <img src={Send} alt="Feellings"/>
+                    <span className="button-text">
+                      Send
+                    </span>
                 </button>
             </div>
         </div>

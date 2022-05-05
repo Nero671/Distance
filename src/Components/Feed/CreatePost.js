@@ -25,8 +25,7 @@ export const CreatePost = ({ likes, message }) => {
             </div>
             <div className="post-content">
                 <div className="post-text">
-                    {message} <br/><br/>
-                    Learn more: <a href="https://antforfigma.com">https://antforfigma.com</a>
+                    {message}
                 </div>
             </div>
             <div className="likes">

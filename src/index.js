@@ -1,8 +1,8 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
+
 import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
+
+import {rerenderEntireTree} from "./render";
 
 let state = {
     dialogsPage: {
@@ -39,20 +39,22 @@ let state = {
     },
 }
 
+export const addPost = (postMessage) => {
+    let newPost = {
+        id: 4,
+        message: postMessage,
+        likesCount: 0
+    };
 
-ReactDOM.render(
-  <React.StrictMode>
-    <App
-        posts={state.feedPage.postData}
-        messages={state.dialogsPage.messagesData}
-        dialog={state.dialogsPage.dialogsData}
-        friend={state.profilePage.friendsData}
-    />
-  </React.StrictMode>,
-  document.getElementById('root')
-);
+    state.feedPage.postData.push(newPost);
+    rerenderEntireTree(state);
+}
+
+
+
+rerenderEntireTree(state);
 
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))
 // or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
+

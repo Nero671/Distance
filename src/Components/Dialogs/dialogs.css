@@ -61,6 +61,40 @@
     margin-left: 5px;
 }
 
+.add-file {
+    cursor: pointer;
+}
+
+.send-message {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.textarea-block {
+    width: 85%;
+}
+
+.textarea-block textarea {
+    font-size: 16px;
+    padding: 20px;
+    line-height: 8px;
+    color: #8C8C8C;
+    font-weight: normal;
+    overflow-x: hidden;
+    overflow-y: auto;
+    resize: none;
+    border: 1px solid #cecece;
+    border-radius: 10px;
+    outline: none;
+    width: 100%;
+}
+
+.message-btn {
+    border: none;
+    background: none;
+}
+
 /*.dialog-user::before {*/
 /*    content: '';*/
 /*    width: 30px;*/

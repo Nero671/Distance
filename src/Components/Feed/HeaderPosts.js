@@ -4,21 +4,22 @@ import Photo from "../../image/photo.svg";
 import Friend from "../../image/tagFriend.svg";
 import Feelings from "../../image/feelings.svg";
 import Send from "../../image/send.svg";
-import {addPost} from "../../index";
+import {addPost, updateNewPostText} from "../../index";
 
-export const HeaderPosts = () => {
+export const HeaderPosts = ({ newPostText }) => {
     let newPostElement = React.createRef();
 
     const addNewPost = () => {
-        let postValue = newPostElement.current.value;
-        if (postValue !== '') {
-            addPost(postValue);
-            newPostElement.current.value = ''
+        if (newPostText.trim() !== '') {
+            addPost();
         } else {
             return false
         }
+    }
 
-
+    const onPostChange = () => {
+        let postValue = newPostElement.current.value;
+        updateNewPostText(postValue);
     }
     return (
         <div className="create-post">
@@ -28,7 +29,7 @@ export const HeaderPosts = () => {
                 </h4>
             </div>
             <div className="body-post">
-                <textarea ref={newPostElement} className="input-post" placeholder="What’s on your mind, Stanislav?"></textarea>
+                <textarea ref={newPostElement} onChange={onPostChange} value={newPostText} className="input-post" placeholder="What’s on your mind, Stanislav?" />
             </div>
             <div className="footer-post">
                 <button className="tag">

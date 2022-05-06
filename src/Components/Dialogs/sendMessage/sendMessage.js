@@ -2,12 +2,23 @@ import React from "react";
 import AddFile from '../../../image/addFile.svg';
 import Emoji from '../../../image/emoji.svg';
 import Send from '../../../image/send.svg';
+import {addMessage, updateNewMessageText} from "../../../index";
 
-export const SendMessage = () => {
+export const SendMessage = ({ newMessageText }) => {
     let newMessage = React.createRef();
 
     const send = () => {
-        const messageText = newMessage.current.value;
+        if(newMessageText.trim() !== '') {
+            addMessage();
+        } else {
+            return false
+        }
+    }
+
+    const onMessageChange = () => {
+        let messageText = newMessage.current.value;
+        console.log(messageText)
+        updateNewMessageText(messageText);
     }
 
     return (
@@ -16,7 +27,7 @@ export const SendMessage = () => {
                 <img src={AddFile} alt="siteName" />
             </div>
             <div className="textarea-block">
-                <textarea ref={newMessage} placeholder="Write a message..."></textarea>
+                <textarea ref={newMessage} onChange={onMessageChange} value={newMessageText} placeholder="Write a message..." />
             </div>
             <div className="send-message">
                 <button className="message-btn smile-button">

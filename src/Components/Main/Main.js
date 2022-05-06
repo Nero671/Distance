@@ -6,7 +6,7 @@ import {Profile} from "../Profile/Profile";
 import {Dialogs} from "../Dialogs/Dialogs";
 import {BrowserRouter, Route, Routes} from "react-router-dom";
 
-export const Main = ({ posts, messages, dialog, friend }) => {
+export const Main = ({ posts, messages, dialog, friend, newPostText, newMessageText }) => {
 
 
 
@@ -18,8 +18,8 @@ export const Main = ({ posts, messages, dialog, friend }) => {
                     <div className="main-wrapper">
                         <Sidebar/>
                         <Routes>
-                            <Route path="/messages/*" element={<Dialogs messages={messages} dialog={dialog}/>}/>
-                            <Route path="/profile" element={<Feed posts={posts} />}/>
+                            <Route path="/messages/*" element={<Dialogs messages={messages} dialog={dialog} newMessageText={newMessageText}/>}/>
+                            <Route path="/profile" element={<Feed posts={posts} newPostText={newPostText} />}/>
                         </Routes>
                         <Profile friend={friend}/>
                     </div>

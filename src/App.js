@@ -3,7 +3,7 @@ import './App.css';
 import {Header} from "./Components/Header/Header";
 import {Main} from "./Components/Main/Main";
 
-const App = ({ posts, messages, dialog, friend }) => {
+const App = ({ posts, messages, dialog, friend, newPostText, newMessageText }) => {
 
 
 
@@ -15,6 +15,8 @@ const App = ({ posts, messages, dialog, friend }) => {
           messages={messages}
           dialog={dialog}
           friend={friend}
+          newPostText={newPostText}
+          newMessageText={newMessageText}
       />
     </div>
   );

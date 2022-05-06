@@ -12,6 +12,8 @@ export const rerenderEntireTree = (state) => {
                 messages={state.dialogsPage.messagesData}
                 dialog={state.dialogsPage.dialogsData}
                 friend={state.profilePage.friendsData}
+                newPostText={state.feedPage.newPostText}
+                newMessageText={state.dialogsPage.newMessageText}
             />
         </React.StrictMode>,
         document.getElementById('root')

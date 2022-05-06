@@ -4,7 +4,7 @@ import {HeaderPosts} from "./HeaderPosts";
 import {CreatePost} from "./CreatePost";
 // import {userName} from "../Components/Header/Header";
 
-export const Feed = ({ posts }) => {
+export const Feed = ({ posts, newPostText }) => {
 
 
 
@@ -12,7 +12,7 @@ export const Feed = ({ posts }) => {
 
     return (
         <div className="main-feed">
-            <HeaderPosts/>
+            <HeaderPosts newPostText={newPostText} />
             {postElements}
         </div>
     )

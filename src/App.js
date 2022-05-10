@@ -3,9 +3,15 @@ import './App.css';
 import {Header} from "./Components/Header/Header";
 import {Main} from "./Components/Main/Main";
 
-const App = ({ posts, messages, dialog, friend, newPostText, newMessageText }) => {
-
-
+const App = ({
+                    posts,
+                    messages,
+                    dialog,
+                    friend,
+                    newPostText,
+                    newMessageText,
+                    dispatch,
+}) => {
 
   return (
     <div className="app-wrapper">
@@ -17,6 +23,7 @@ const App = ({ posts, messages, dialog, friend, newPostText, newMessageText }) =
           friend={friend}
           newPostText={newPostText}
           newMessageText={newMessageText}
+          dispatch={dispatch}
       />
     </div>
   );

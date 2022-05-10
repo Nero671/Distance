@@ -2,14 +2,15 @@ import React from "react";
 import AddFile from '../../../image/addFile.svg';
 import Emoji from '../../../image/emoji.svg';
 import Send from '../../../image/send.svg';
-import {addMessage, updateNewMessageText} from "../../../index";
+import {addMessageActionCreator, updateNewMessageActionCreator} from "../../../index";
 
-export const SendMessage = ({ newMessageText }) => {
+export const SendMessage = ({ newMessageText, dispatch }) => {
     let newMessage = React.createRef();
 
     const send = () => {
         if(newMessageText.trim() !== '') {
-            addMessage();
+
+            dispatch(addMessageActionCreator);
         } else {
             return false
         }
@@ -17,8 +18,8 @@ export const SendMessage = ({ newMessageText }) => {
 
     const onMessageChange = () => {
         let messageText = newMessage.current.value;
-        console.log(messageText)
-        updateNewMessageText(messageText);
+
+        dispatch(updateNewMessageActionCreator(messageText));
     }
 
     return (

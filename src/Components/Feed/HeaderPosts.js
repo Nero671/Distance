@@ -4,14 +4,16 @@ import Photo from "../../image/photo.svg";
 import Friend from "../../image/tagFriend.svg";
 import Feelings from "../../image/feelings.svg";
 import Send from "../../image/send.svg";
-import {addPost, updateNewPostText} from "../../index";
+import {addPostActionCreator, updateNewPostActionCreator} from "../../index";
 
-export const HeaderPosts = ({ newPostText }) => {
+
+
+export const HeaderPosts = ({ newPostText, dispatch }) => {
     let newPostElement = React.createRef();
 
     const addNewPost = () => {
         if (newPostText.trim() !== '') {
-            addPost();
+            dispatch(addPostActionCreator());
         } else {
             return false
         }
@@ -19,7 +21,7 @@ export const HeaderPosts = ({ newPostText }) => {
 
     const onPostChange = () => {
         let postValue = newPostElement.current.value;
-        updateNewPostText(postValue);
+        dispatch(updateNewPostActionCreator(postValue));
     }
     return (
         <div className="create-post">

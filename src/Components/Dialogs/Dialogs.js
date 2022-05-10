@@ -4,7 +4,7 @@ import {DialogUserName} from "./DialogsItem/DialogsItem";
 import {Message} from "./Messages/Message";
 import {SendMessage} from "./sendMessage/sendMessage";
 
-export const Dialogs = ({ messages, dialog, newMessageText }) => {
+export const Dialogs = ({ messages, dialog, newMessageText, dispatch }) => {
 
     let dialogsElements = dialog.map((item, index) => <DialogUserName key={index} name={item.name} id={item.id} />)
     let messagesElements = messages.map((item, index) => <Message key={index} name={item.userProfile} message={item.message} id={item.id}/>)
@@ -25,7 +25,7 @@ export const Dialogs = ({ messages, dialog, newMessageText }) => {
                 </div>
             </div>
             <div className="post">
-                <SendMessage newMessageText={newMessageText} />
+                <SendMessage newMessageText={newMessageText} dispatch={dispatch} />
             </div>
         </div>
     )

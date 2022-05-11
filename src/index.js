@@ -4,11 +4,9 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import './index.css';
-
-const ADD_POST = 'ADD-POST';
-const UPDATE_NEW_POST_TEXT = 'UPDATE-NEW-POST-TEXT';
-const ADD_MESSAGE = 'ADD-MESSAGE';
-const UPDATE_NEW_MESSAGE_TEXT = 'UPDATE-NEW-MESSAGE-TEXT';
+import feedPageReducer from "./redux/feedPageReducer";
+import dialogsPageReducer from "./redux/dialogsPageReducer";
+import profilePageReducer from "./redux/profilePageReducer";
 
 
 let store = {
@@ -59,45 +57,13 @@ let store = {
     },
 
     dispatch(action) {
-        if (action.type === ADD_POST) {
-            let newPost = {
-                id: 4,
-                message: this._state.feedPage.newPostText,
-                likesCount: 0
-            };
+        this._state.feedPage = feedPageReducer(this._state.feedPage, action);
+        this._state.dialogsPage = dialogsPageReducer(this._state.dialogsPage, action);
+        this._state.profilePage = profilePageReducer(this._state.profilePage, action);
 
-            this._state.feedPage.postData.push(newPost);
-            this._state.feedPage.newPostText = '';
-            rerenderEntireTree(this._state);
-        } else if (action.type === UPDATE_NEW_POST_TEXT) {
-            this._state.feedPage.newPostText = action.newText;
-            rerenderEntireTree(this._state);
-        } else if (action.type === ADD_MESSAGE) {
-            let newMessage = {
-                id: 5,
-                message: this._state.dialogsPage.newMessageText,
-                userProfile: 'me'
-            };
-
-            this._state.dialogsPage.messagesData.push(newMessage);
-            this._state.dialogsPage.newMessageText = '';
-            rerenderEntireTree(this._state);
-        } else if (action.type = UPDATE_NEW_MESSAGE_TEXT) {
-            this._state.dialogsPage.newMessageText = action.messageText;
-            rerenderEntireTree(this._state);
-        }
+        rerenderEntireTree(this._state);
     }
 }
-
-export const addPostActionCreator = () => ({ type: ADD_POST });
-
-export const updateNewPostActionCreator = (postValue) =>
-    ({ type: UPDATE_NEW_POST_TEXT, newText: postValue });
-
-export const addMessageActionCreator = () => ({type: ADD_MESSAGE});
-
-export const updateNewMessageActionCreator = (messageText) =>
-    ({ type: UPDATE_NEW_MESSAGE_TEXT, messageText: messageText});
 
 
 const rerenderEntireTree = (state) => {

@@ -4,7 +4,8 @@ import Photo from "../../image/photo.svg";
 import Friend from "../../image/tagFriend.svg";
 import Feelings from "../../image/feelings.svg";
 import Send from "../../image/send.svg";
-import {addPostActionCreator, updateNewPostActionCreator} from "../../index";
+import {addPostActionCreator, updateNewPostActionCreator} from "../../redux/feedPageReducer";
+
 
 
 

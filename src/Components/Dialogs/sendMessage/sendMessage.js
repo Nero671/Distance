@@ -2,7 +2,7 @@ import React from "react";
 import AddFile from '../../../image/addFile.svg';
 import Emoji from '../../../image/emoji.svg';
 import Send from '../../../image/send.svg';
-import {addMessageActionCreator, updateNewMessageActionCreator} from "../../../index";
+import {addMessageActionCreator, updateNewMessageActionCreator} from "../../../redux/dialogsPageReducer";
 
 export const SendMessage = ({ newMessageText, dispatch }) => {
     let newMessage = React.createRef();

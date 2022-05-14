@@ -1,7 +1,16 @@
 const ADD_POST = 'ADD-POST';
 const UPDATE_NEW_POST_TEXT = 'UPDATE-NEW-POST-TEXT';
 
-const feedPageReducer = (state, action) => {
+let initialState = {
+    postData: [
+        {id: 1, message: 'Hi this my fist post. I decided to learn React and become a real pro in it!', likesCount: 33},
+        {id: 2, message: 'My studies continua', likesCount: 22},
+        {id: 3, message: 'Hi, everyone. React is Better then Vue :D', likesCount: 12},
+    ],
+    newPostText: ''
+}
+
+const feedPageReducer = (state = initialState, action) => {
     switch (action.type) {
         case ADD_POST:
             let newPost = {

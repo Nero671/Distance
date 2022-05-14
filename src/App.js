@@ -12,7 +12,6 @@ const App = ({
                     newMessageText,
                     dispatch,
 }) => {
-
   return (
     <div className="app-wrapper">
       <Header/>

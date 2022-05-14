@@ -7,63 +7,64 @@ import './index.css';
 import feedPageReducer from "./redux/feedPageReducer";
 import dialogsPageReducer from "./redux/dialogsPageReducer";
 import profilePageReducer from "./redux/profilePageReducer";
+import store from "./redux/redux-store";
 
 
-let store = {
-    _state: {
-        dialogsPage: {
-            dialogsData: [
-                {id: 1, name: 'Wanda'},
-                {id: 2, name: 'Pietro'},
-                {id: 3, name: 'Steven'},
-                {id: 4, name: 'Peter'},
-            ],
-
-            messagesData: [
-                {id: 1, message: 'Hi there, how are u?', userProfile: 'me'},
-                {id: 2, message: 'Never been better! U?', userProfile: 'Wanda'},
-                {id: 3, message: 'So so, have some personal troubles', userProfile: 'me'},
-                {id: 4, message: 'Sound like shit....?', userProfile: 'Wanda'},
-            ],
-
-            newMessageText: '',
-        },
-
-        feedPage: {
-            postData: [
-                {id: 1, message: 'Hi this my fist post. I decided to learn React and become a real pro in it!', likesCount: 33},
-                {id: 2, message: 'My studies continua', likesCount: 22},
-                {id: 3, message: 'Hi, everyone. React is Better then Vue :D', likesCount: 12},
-            ],
-            newPostText: ''
-        },
-
-        profilePage: {
-            friendsData: [
-                {id: 1, userName: 'Wanda'},
-                {id: 2, userName: 'Pietro'},
-                {id: 3, userName: 'Steven'},
-                {id: 4, userName: 'Peter'},
-            ],
-        },
-    },
-
-    rerenderEntireTree() {
-        console.log('State change')
-    },
-
-    getState() {
-        return this._state
-    },
-
-    dispatch(action) {
-        this._state.feedPage = feedPageReducer(this._state.feedPage, action);
-        this._state.dialogsPage = dialogsPageReducer(this._state.dialogsPage, action);
-        this._state.profilePage = profilePageReducer(this._state.profilePage, action);
-
-        rerenderEntireTree(this._state);
-    }
-}
+// let store = {
+//     _state: {
+//         dialogsPage: {
+//             dialogsData: [
+//                 {id: 1, name: 'Wanda'},
+//                 {id: 2, name: 'Pietro'},
+//                 {id: 3, name: 'Steven'},
+//                 {id: 4, name: 'Peter'},
+//             ],
+//
+//             messagesData: [
+//                 {id: 1, message: 'Hi there, how are u?', userProfile: 'me'},
+//                 {id: 2, message: 'Never been better! U?', userProfile: 'Wanda'},
+//                 {id: 3, message: 'So so, have some personal troubles', userProfile: 'me'},
+//                 {id: 4, message: 'Sound like shit....?', userProfile: 'Wanda'},
+//             ],
+//
+//             newMessageText: '',
+//         },
+//
+//         feedPage: {
+//             postData: [
+//                 {id: 1, message: 'Hi this my fist post. I decided to learn React and become a real pro in it!', likesCount: 33},
+//                 {id: 2, message: 'My studies continua', likesCount: 22},
+//                 {id: 3, message: 'Hi, everyone. React is Better then Vue :D', likesCount: 12},
+//             ],
+//             newPostText: ''
+//         },
+//
+//         profilePage: {
+//             friendsData: [
+//                 {id: 1, userName: 'Wanda'},
+//                 {id: 2, userName: 'Pietro'},
+//                 {id: 3, userName: 'Steven'},
+//                 {id: 4, userName: 'Peter'},
+//             ],
+//         },
+//     },
+//
+//     rerenderEntireTree() {
+//         console.log('State change')
+//     },
+//
+//     getState() {
+//         return this._state
+//     },
+//
+//     dispatch(action) {
+//         this._state.feedPage = feedPageReducer(this._state.feedPage, action);
+//         this._state.dialogsPage = dialogsPageReducer(this._state.dialogsPage, action);
+//         this._state.profilePage = profilePageReducer(this._state.profilePage, action);
+//
+//         rerenderEntireTree(this._state);
+//     }
+// }
 
 
 const rerenderEntireTree = (state) => {
@@ -77,6 +78,8 @@ const rerenderEntireTree = (state) => {
                 newPostText={state.feedPage.newPostText}
                 newMessageText={state.dialogsPage.newMessageText}
                 dispatch={store.dispatch.bind(store)}
+                state={state}
+                store={store}
             />
         </React.StrictMode>,
         document.getElementById('root')
@@ -85,6 +88,10 @@ const rerenderEntireTree = (state) => {
 
 reportWebVitals();
 rerenderEntireTree(store.getState());
+store.subscribe(() => {
+    let state = store.getState();
+    rerenderEntireTree(state);
+})
 
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))

@@ -1,27 +1,48 @@
 const ADD_MESSAGE = 'ADD-MESSAGE';
 const UPDATE_NEW_MESSAGE_TEXT = 'UPDATE-NEW-MESSAGE-TEXT';
 
-const dialogsPageReducer = (state, action) => {
+let initialState = {
+    dialogsData: [
+        {id: 1, name: 'Wanda'},
+        {id: 2, name: 'Pietro'},
+        {id: 3, name: 'Steven'},
+        {id: 4, name: 'Peter'},
+    ],
 
-    if  (action.type === ADD_MESSAGE) {
-        let newMessage = {
-            id: 5,
-            message: state.newMessageText,
-            userProfile: 'me'
-        };
+    messagesData: [
+        {id: 1, message: 'Hi there, how are u?', userProfile: 'me'},
+        {id: 2, message: 'Never been better! U?', userProfile: 'Wanda'},
+        {id: 3, message: 'So so, have some personal troubles', userProfile: 'me'},
+        {id: 4, message: 'Sound like shit....?', userProfile: 'Wanda'},
+    ],
 
-        state.messagesData.push(newMessage);
-        state.newMessageText = '';
-    } else if (action.type = UPDATE_NEW_MESSAGE_TEXT) {
-        state.newMessageText = action.messageText;
-    }
-
-    return state
+    newMessageText: '',
 }
 
-export const addMessageActionCreator = () => ({type: ADD_MESSAGE});
+const dialogsPageReducer = (state = initialState, action) => {
+
+    switch (action.type) {
+        case ADD_MESSAGE:
+            let newMessage = {
+                id: 5,
+                message: state.newMessageText,
+                userProfile: 'me'
+            };
+
+            state.messagesData.push(newMessage);
+            state.newMessageText = '';
+            return state
+        case UPDATE_NEW_MESSAGE_TEXT:
+            state.newMessageText = action.messageText;
+            return state
+        default:
+            return state
+    }
+}
+
+export const addMessageActionCreator = () => ({ type: ADD_MESSAGE });
 
 export const updateNewMessageActionCreator = (messageText) =>
-    ({ type: UPDATE_NEW_MESSAGE_TEXT, messageText: messageText});
+    ({ type: UPDATE_NEW_MESSAGE_TEXT, messageText: messageText });
 
 export default dialogsPageReducer;

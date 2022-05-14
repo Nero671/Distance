@@ -13,9 +13,10 @@ export const Main = ({
                          friend,
                          newPostText,
                          newMessageText,
+                         store,
                          dispatch,
+                         state
 }) => {
-
     return (
         <BrowserRouter>
             <main id="content">

@@ -6,23 +6,17 @@ import Feelings from "../../image/feelings.svg";
 import Send from "../../image/send.svg";
 import {addPostActionCreator, updateNewPostActionCreator} from "../../redux/feedPageReducer";
 
-
-
-
-export const HeaderPosts = ({ newPostText, dispatch }) => {
+export const HeaderPosts = ({ newPostText, dispatch, updateNewPost, addPost }) => {
     let newPostElement = React.createRef();
 
     const addNewPost = () => {
-        if (newPostText.trim() !== '') {
-            dispatch(addPostActionCreator());
-        } else {
-            return false
-        }
+        addPost();
     }
 
     const onPostChange = () => {
         let postValue = newPostElement.current.value;
-        dispatch(updateNewPostActionCreator(postValue));
+        updateNewPost(postValue);
+        // dispatch(updateNewPostActionCreator(postValue));
     }
     return (
         <div className="create-post">

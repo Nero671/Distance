@@ -4,9 +4,6 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import './index.css';
-import feedPageReducer from "./redux/feedPageReducer";
-import dialogsPageReducer from "./redux/dialogsPageReducer";
-import profilePageReducer from "./redux/profilePageReducer";
 import store from "./redux/redux-store";
 
 
@@ -75,9 +72,7 @@ const rerenderEntireTree = (state) => {
                 messages={state.dialogsPage.messagesData}
                 dialog={state.dialogsPage.dialogsData}
                 friend={state.profilePage.friendsData}
-                newPostText={state.feedPage.newPostText}
-                newMessageText={state.dialogsPage.newMessageText}
-                dispatch={store.dispatch.bind(store)}
+                // dispatch={store.dispatch.bind(store)}
                 state={state}
                 store={store}
             />

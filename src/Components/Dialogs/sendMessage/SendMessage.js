@@ -4,13 +4,13 @@ import Emoji from '../../../image/emoji.svg';
 import Send from '../../../image/send.svg';
 import {addMessageActionCreator, updateNewMessageActionCreator} from "../../../redux/dialogsPageReducer";
 
-export const SendMessage = ({ newMessageText, dispatch }) => {
+export const SendMessage = ({ newMessageText, sendMessage, updateMessageText }) => {
 
     let newMessage = React.createRef();
 
     const send = () => {
         if(newMessageText.trim() !== '') {
-            dispatch(addMessageActionCreator());
+            sendMessage();
         } else {
             return false
         }
@@ -18,8 +18,7 @@ export const SendMessage = ({ newMessageText, dispatch }) => {
 
     const onMessageChange = () => {
         let messageText = newMessage.current.value;
-
-        dispatch(updateNewMessageActionCreator(messageText));
+        updateMessageText(messageText);
     }
 
     return (

@@ -11,11 +11,7 @@ export const Main = ({
                          messages,
                          dialog,
                          friend,
-                         newPostText,
-                         newMessageText,
-                         store,
-                         dispatch,
-                         state
+                         store
 }) => {
     return (
         <BrowserRouter>
@@ -27,14 +23,12 @@ export const Main = ({
                             <Route path="/messages/*"
                                    element={<Dialogs messages={messages}
                                                      dialog={dialog}
-                                                     newMessageText={newMessageText}
-                                                     dispatch={dispatch}
+                                                     store={store}
                                    />}
                             />
                             <Route path="/profile"
                                    element={<Feed posts={posts}
-                                                  newPostText={newPostText}
-                                                  dispatch={dispatch}
+                                                  store={store}
                                             />}
                             />
                         </Routes>

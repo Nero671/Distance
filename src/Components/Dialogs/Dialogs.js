@@ -2,9 +2,9 @@ import React from "react";
 import "./dialogs.css";
 import {DialogUserName} from "./DialogsItem/DialogsItem";
 import {Message} from "./Messages/Message";
-import {SendMessage} from "./sendMessage/sendMessage";
+import {SendMessageContainer} from "./sendMessage/SendMessageContainer";
 
-export const Dialogs = ({ messages, dialog, newMessageText, dispatch }) => {
+export const Dialogs = ({ messages, dialog, store }) => {
 
     let dialogsElements = dialog.map((item, index) => <DialogUserName key={index} name={item.name} id={item.id} />)
     let messagesElements = messages.map((item, index) => <Message key={index} name={item.userProfile} message={item.message} id={item.id}/>)
@@ -25,7 +25,7 @@ export const Dialogs = ({ messages, dialog, newMessageText, dispatch }) => {
                 </div>
             </div>
             <div className="post">
-                <SendMessage newMessageText={newMessageText} dispatch={dispatch} />
+                <SendMessageContainer store={store} />
             </div>
         </div>
     )

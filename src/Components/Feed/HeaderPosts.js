@@ -4,13 +4,16 @@ import Photo from "../../image/photo.svg";
 import Friend from "../../image/tagFriend.svg";
 import Feelings from "../../image/feelings.svg";
 import Send from "../../image/send.svg";
-import {addPostActionCreator, updateNewPostActionCreator} from "../../redux/feedPageReducer";
 
-export const HeaderPosts = ({ newPostText, dispatch, updateNewPost, addPost }) => {
+export const HeaderPosts = ({ newPostText, updateNewPost, addPost }) => {
     let newPostElement = React.createRef();
 
-    const addNewPost = () => {
-        addPost();
+    const onAddPost = () => {
+        if (newPostText.trim() !== '') {
+            addPost();
+        } else {
+            return false
+        }
     }
 
     const onPostChange = () => {
@@ -47,7 +50,7 @@ export const HeaderPosts = ({ newPostText, dispatch, updateNewPost, addPost }) =
                           Feeling/Actv...
                     </span>
                 </button>
-                <button className="tag" onClick={addNewPost}>
+                <button className="tag" onClick={onAddPost}>
                     <img src={Send} alt="Feellings"/>
                     <span className="button-text">
                       Send

@@ -1,27 +1,21 @@
 import React from "react";
 import "./feed.css";
-import Photo from "../../image/photo.svg";
-import Friend from "../../image/tagFriend.svg";
-import Feelings from "../../image/feelings.svg";
-import Send from "../../image/send.svg";
 import {addPostActionCreator, updateNewPostActionCreator} from "../../redux/feedPageReducer";
 import {HeaderPosts} from "./HeaderPosts";
 
-export const HeaderPostsContainer = ({ newPostText, dispatch }) => {
-    let newPostElement = React.createRef();
+export const HeaderPostsContainer = ({ store }) => {
+
+    let state = store.getState();
 
     const addPost = () => {
-        if (newPostText.trim() !== '') {
-            dispatch(addPostActionCreator());
-        } else {
-            return false
-        }
+        store.dispatch(addPostActionCreator());
     }
 
     const onPostChange = (postValue) => {
-        dispatch(updateNewPostActionCreator(postValue));
+        store.dispatch(updateNewPostActionCreator(postValue));
     }
+
     return (
-        <HeaderPosts updateNewPost={onPostChange} addPost={addPost}/>
+        <HeaderPosts updateNewPost={onPostChange} addPost={addPost} newPostText={state.feedPage.newPostText}/>
     )
 }

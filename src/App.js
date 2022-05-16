@@ -1,4 +1,3 @@
-import logo from './logo.svg';
 import './App.css';
 import {Header} from "./Components/Header/Header";
 import {Main} from "./Components/Main/Main";
@@ -8,9 +7,7 @@ const App = ({
                     messages,
                     dialog,
                     friend,
-                    newPostText,
-                    newMessageText,
-                    dispatch,
+                    store
 }) => {
   return (
     <div className="app-wrapper">
@@ -20,9 +17,7 @@ const App = ({
           messages={messages}
           dialog={dialog}
           friend={friend}
-          newPostText={newPostText}
-          newMessageText={newMessageText}
-          dispatch={dispatch}
+          store={store}
       />
     </div>
   );

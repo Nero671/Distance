@@ -5,6 +5,7 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import './index.css';
 import store from "./redux/redux-store";
+import {Provider} from "./StoreContext";
 
 
 // let store = {
@@ -67,15 +68,16 @@ import store from "./redux/redux-store";
 const rerenderEntireTree = (state) => {
     ReactDOM.render(
         <React.StrictMode>
-            <App
-                posts={state.feedPage.postData}
-                messages={state.dialogsPage.messagesData}
-                dialog={state.dialogsPage.dialogsData}
-                friend={state.profilePage.friendsData}
-                // dispatch={store.dispatch.bind(store)}
-                state={state}
-                store={store}
-            />
+            <Provider store={store}>
+                <App
+                    posts={state.feedPage.postData}
+                    messages={state.dialogsPage.messagesData}
+                    dialog={state.dialogsPage.dialogsData}
+                    friend={state.profilePage.friendsData}
+                    // dispatch={store.dispatch.bind(store)}
+                    // state={state}
+                />
+            </Provider>
         </React.StrictMode>,
         document.getElementById('root')
     );

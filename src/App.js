@@ -7,7 +7,6 @@ const App = ({
                     messages,
                     dialog,
                     friend,
-                    store
 }) => {
   return (
     <div className="app-wrapper">
@@ -17,7 +16,6 @@ const App = ({
           messages={messages}
           dialog={dialog}
           friend={friend}
-          store={store}
       />
     </div>
   );

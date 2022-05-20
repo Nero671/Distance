@@ -69,12 +69,7 @@ const rerenderEntireTree = (state) => {
         <React.StrictMode>
             <Provider store={store}>
                 <App
-                    posts={state.feedPage.postData}
-                    messages={state.dialogsPage.messagesData}
-                    dialog={state.dialogsPage.dialogsData}
                     friend={state.profilePage.friendsData}
-                    // dispatch={store.dispatch.bind(store)}
-                    // state={state}
                 />
             </Provider>
         </React.StrictMode>,
@@ -84,10 +79,6 @@ const rerenderEntireTree = (state) => {
 
 reportWebVitals();
 rerenderEntireTree(store.getState());
-store.subscribe(() => {
-    let state = store.getState();
-    rerenderEntireTree(state);
-})
 
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))

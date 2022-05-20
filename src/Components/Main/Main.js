@@ -1,17 +1,12 @@
 import React from "react";
 import "./main.css";
 import {Sidebar} from "../Sidebar/Sidebar";
-import {Feed} from "../Feed/Feed";
-import {Profile} from "../Profile/Profile";
-import {Dialogs} from "../Dialogs/Dialogs";
 import {BrowserRouter, Route, Routes} from "react-router-dom";
+import {FeedContainer} from "../Feed/FeedContainerr";
+import {DialogContainer} from "../Dialogs/DialogContainer";
+import {ProfileContainer} from "../Profile/ProfileContainer";
 
-export const Main = ({
-                         posts,
-                         messages,
-                         dialog,
-                         friend,
-}) => {
+export const Main = () => {
     return (
         <BrowserRouter>
             <main id="content">
@@ -20,16 +15,13 @@ export const Main = ({
                         <Sidebar/>
                         <Routes>
                             <Route path="/messages/*"
-                                   element={<Dialogs messages={messages}
-                                                     dialog={dialog}
-                                   />}
+                                   element={<DialogContainer />}
                             />
                             <Route path="/profile"
-                                   element={<Feed posts={posts}
-                                            />}
+                                   element={<FeedContainer />}
                             />
                         </Routes>
-                        <Profile friend={friend}/>
+                        <ProfileContainer />
                     </div>
                 </div>
             </main>

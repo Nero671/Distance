@@ -5,6 +5,7 @@ import {Feed} from "../Feed/Feed";
 import {Profile} from "../Profile/Profile";
 import {Dialogs} from "../Dialogs/Dialogs";
 import {BrowserRouter, Route, Routes} from "react-router-dom";
+import {FeedContainer} from "../Feed/FeedContainerr";
 
 export const Main = ({
                          posts,
@@ -25,8 +26,7 @@ export const Main = ({
                                    />}
                             />
                             <Route path="/profile"
-                                   element={<Feed posts={posts}
-                                            />}
+                                   element={<FeedContainer />}
                             />
                         </Routes>
                         <Profile friend={friend}/>

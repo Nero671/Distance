@@ -33,7 +33,8 @@ import {connect} from "react-redux";
 
 let mapStateToProps = (state) => {
     return {
-        newPostText: state.feedPage.newPostText
+        newPostText: state.feedPage.newPostText,
+        posts: state.feedPage.postData
     }
 }
 

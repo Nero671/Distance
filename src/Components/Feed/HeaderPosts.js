@@ -5,6 +5,7 @@ import Friend from "../../image/tagFriend.svg";
 import Feelings from "../../image/feelings.svg";
 import Send from "../../image/send.svg";
 
+
 export const HeaderPosts = ({ newPostText, updateNewPost, addPost }) => {
     let newPostElement = React.createRef();
 

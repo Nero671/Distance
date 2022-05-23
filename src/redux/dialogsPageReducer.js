@@ -28,16 +28,17 @@ const dialogsPageReducer = (state = initialState, action) => {
                 message: state.newMessageText,
                 userProfile: 'me'
             };
-            let stateCopy = {...state};
-            stateCopy.messagesData = [...state.messagesData];
-            stateCopy.messagesData.push(newMessage);
-            stateCopy.newMessageText = '';
-            return stateCopy
+            return {
+                ...state,
+                messagesData: [...state.messagesData, newMessage],
+                newMessageText: ''
+            };
         }
         case UPDATE_NEW_MESSAGE_TEXT: {
-            let stateCopy = {...state};
-            stateCopy.newMessageText = action.messageText;
-            return stateCopy
+            return {
+                ...state,
+                newMessageText: action.messageText
+            };
         }
         default:
             return state

@@ -3,15 +3,9 @@
     height: auto;
 }
 
-.dialogs-title {
-    font-size: 24px;
-    font-weight: 600;
-    margin-bottom: 15px;
-    text-transform: uppercase;
-}
-
 .dialogs-content {
     display: flex;
+    padding: 16px;
 }
 
 .dialog-user-list {

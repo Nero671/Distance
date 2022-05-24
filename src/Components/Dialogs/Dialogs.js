@@ -11,10 +11,12 @@ export const Dialogs = ({ messages, dialog }) => {
 
     return (
         <div className="dialog-messages-block">
-            <div className="post dialog-post">
-                <h1 className="dialogs-title">
-                    Dialogs
-                </h1>
+            <div className="create-post dialog-post">
+                <div className="header-post">
+                    <h1 className="title dialogs-title">
+                        Dialogs
+                    </h1>
+                </div>
                 <div className="dialogs-content">
                     <ul className="dialog-user-list">
                         {dialogsElements}

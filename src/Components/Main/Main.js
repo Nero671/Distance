@@ -5,6 +5,7 @@ import {BrowserRouter, Route, Routes} from "react-router-dom";
 import {FeedContainer} from "../Feed/FeedContainerr";
 import {DialogContainer} from "../Dialogs/DialogContainer";
 import {ProfileContainer} from "../Profile/ProfileContainer";
+import {UsersContainer} from "../Users/UsersContainer";
 
 export const Main = () => {
     return (
@@ -19,6 +20,9 @@ export const Main = () => {
                             />
                             <Route path="/profile"
                                    element={<FeedContainer />}
+                            />
+                            <Route path="/users"
+                                   element={<UsersContainer />}
                             />
                         </Routes>
                         <ProfileContainer />

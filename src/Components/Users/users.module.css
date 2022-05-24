@@ -1,0 +1,70 @@
+.userList {
+    padding: 16px;
+}
+
+.userListItem {
+    padding: 15px;
+    border: 1px solid #cecece;
+    border-radius: 10px;
+    margin-left: 5px;
+    margin-bottom: 20px;
+    display: flex;
+}
+
+.userInfo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.userAvatar img {
+    width: 85px;
+    height: 85px;
+    object-fit: cover;
+    border-radius: 50%;
+}
+
+.followBtn {
+    background: #1890FF;
+    color: #fff;
+    outline: none;
+    border: none;
+    padding: 6px 15px;
+    font-size: 14px;
+    border-radius: 5px;
+    margin-top: 5px;
+    width: 85px;
+}
+
+.userInfo:last-child {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-left: 20px;
+    width: 100%;
+}
+
+.userName {
+    font-size: 22px;
+    font-weight: 700;
+}
+
+.userInfoLeft {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+}
+
+.userStatus {
+    font-size: 16px;
+    font-weight: 500;
+    color: #666666;
+}
+
+.userInfoRight {
+    text-align: right;
+    color: #262626;
+    font-weight: 500;
+}

@@ -80,4 +80,11 @@ li {
   border-radius: 4px;
   margin: 16px 0px;
   padding: 16px;
+  width: 100%;
+}
+
+.title {
+  font-size: 24px;
+  font-weight: 600;
+  text-transform: uppercase;
 }

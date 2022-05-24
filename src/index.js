@@ -66,13 +66,13 @@ import {Provider} from "react-redux";
 
 const rerenderEntireTree = (state) => {
     ReactDOM.render(
-        <React.StrictMode>
+        // <React.StrictMode>
             <Provider store={store}>
                 <App
                     friend={state.profilePage.friendsData}
                 />
-            </Provider>
-        </React.StrictMode>,
+            </Provider>,
+        // </React.StrictMode>,
         document.getElementById('root')
     );
 }

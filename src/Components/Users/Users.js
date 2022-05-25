@@ -1,45 +1,20 @@
 import React from "react";
 import styles from "./users.module.css";
+import axios from "axios";
+import UnknownUser from '../../image/user.svg';
 
 export const Users = ({ users, follow, unfollow, setUsers }) => {
-
-    if(users.length === 0) {
-        setUsers([
-            {
-                id: 1,
-                followed: false,
-                userName: 'Felix',
-                userAvatar: 'https://wvw.db1223.com/gallery/pp.userapi.com/oDtb_Vta6W3wx9ERnFuZ9m0L2Q9AJbq8DGOZBQ/OPeBASU6vaY.jpg',
-                userStatus: 'Im looking for a job',
-                location: {
-                    city: 'Buenos Aires',
-                    country: 'Argentina,'
-                }
-            },
-            {
-                id: 2,
-                followed: true,
-                userName: 'Tatiana',
-                userAvatar: 'https://wvw.db1223.com/gallery/pp.userapi.com/oDtb_Vta6W3wx9ERnFuZ9m0L2Q9AJbq8DGOZBQ/OPeBASU6vaY.jpg',
-                userStatus: 'Infinity happiness',
-                location: {
-                    city: 'Minsk',
-                    country: 'Belarus,'
-                }
-            },
-            {
-                id: 3,
-                followed: true,
-                userName: 'Volodimir',
-                userAvatar: 'https://wvw.db1223.com/gallery/pp.userapi.com/oDtb_Vta6W3wx9ERnFuZ9m0L2Q9AJbq8DGOZBQ/OPeBASU6vaY.jpg',
-                userStatus: 'Trying something new',
-                location: {
-                    city: 'Warsaw',
-                    country: 'Poland,'
-                }
-            },
-        ])
+    let getUsers = () => {
+        if(users.length === 0) {
+            axios.get('https://social-network.samuraijs.com/api/1.0/users')
+                .then(response => {
+                    console.log(response.data.items.name)
+                    setUsers(response.data.items)
+                })
+        }
     }
+
+
 
     return (
         <div className="create-post users-block">
@@ -51,7 +26,7 @@ export const Users = ({ users, follow, unfollow, setUsers }) => {
                     <div key={item.id} className={styles.userListItem}>
                         <div className={styles.userInfo}>
                             <div className={styles.userAvatar}>
-                                <img src={item.userAvatar}/>
+                                <img src={ item.photos.small != undefined ? item.photos.small : UnknownUser }/>
                             </div>
                             <div>
                                 { item.followed ? <button onClick={() => {
@@ -67,18 +42,18 @@ export const Users = ({ users, follow, unfollow, setUsers }) => {
                         <div className={styles.userInfo}>
                             <div className={styles.userInfoLeft}>
                                 <div className={styles.userName}>
-                                    {item.userName}
+                                    {item.name}
                                 </div>
                                 <div className={styles.userStatus}>
-                                    {item.userStatus}
+                                    {item.status}
                                 </div>
                             </div>
                             <div className={styles.userInfoRight}>
                                 <div className="user-country">
-                                    {item.location.country}
+                                    {"item.location.country"}
                                 </div>
                                 <div className="user-city">
-                                    {item.location.city}
+                                    {"item.location.city"}
                                 </div>
                             </div>
                         </div>

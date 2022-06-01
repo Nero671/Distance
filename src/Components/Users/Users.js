@@ -5,9 +5,7 @@ import UnknownUser from '../../image/user.svg';
 
 class Users extends React.Component {
 
-    constructor(props) {
-        super(props);
-
+    componentDidMount() {
         axios.get('http://myjson.dit.upm.es/api/bins/bhhb')
             .then(response => {
                 this.props.setUsers(response.data.items)

@@ -1,6 +1,7 @@
 import React from "react";
 import styles from "./users.module.css";
 import UnknownUser from "../../image/user.svg";
+import Preloader from "../Common/Preloader/Preloader";
 
 export const Users = (props) => {
 
@@ -66,6 +67,9 @@ export const Users = (props) => {
                         </span>
                 })}
             </div>
+            {props.isFetching ?
+                <Preloader />
+                : null}
         </div>
     )
 }

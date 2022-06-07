@@ -12,6 +12,10 @@
     width: 100%;
 }
 
+.users-block {
+    position: relative;
+}
+
 .header-post {
     background: #F5F5F5;
     padding: 9px 16px;

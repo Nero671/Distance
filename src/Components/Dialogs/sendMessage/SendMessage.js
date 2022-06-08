@@ -2,7 +2,11 @@ import React from "react";
 import AddFile from '../../../image/addFile.svg';
 import Emoji from '../../../image/emoji.svg';
 import Send from '../../../image/send.svg';
-import {addMessageActionCreator, updateNewMessageActionCreator} from "../../../redux/dialogsPageReducer";
+import {
+    addMessageActionCreator,
+    updateMessageText,
+    updateNewMessageActionCreator
+} from "../../../redux/dialogsPageReducer";
 
 export const SendMessage = ({ newMessageText, sendMessage, updateMessageText }) => {
 

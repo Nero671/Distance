@@ -36,9 +36,9 @@ const feedPageReducer = (state = initialState, action) => {
     }
 }
 
-export const addPostActionCreator = () => ({ type: ADD_POST });
+export const addPost = () => ({ type: ADD_POST });
 
-export const updateNewPostActionCreator = (postValue) =>
+export const updateNewPost = (postValue) =>
     ({ type: UPDATE_NEW_POST_TEXT, newText: postValue });
 
 export default feedPageReducer;

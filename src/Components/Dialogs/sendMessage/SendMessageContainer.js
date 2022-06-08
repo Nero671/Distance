@@ -1,5 +1,8 @@
 import React from "react";
-import {addMessageActionCreator, updateNewMessageActionCreator} from "../../../redux/dialogsPageReducer";
+import {
+    sendMessage,
+    updateMessageText,
+} from "../../../redux/dialogsPageReducer";
 import {SendMessage} from "./SendMessage";
 import {connect} from "react-redux";
 
@@ -34,15 +37,18 @@ let mapStateToProps = (state) => {
     }
 }
 
-let mapDispatchToProps = (dispatch) => {
-    return {
-        updateMessageText: (messageText) => {
-            dispatch(updateNewMessageActionCreator(messageText))
-        },
-        sendMessage: () => {
-            dispatch(addMessageActionCreator());
-        }
-    }
-}
+// let mapDispatchToProps = (dispatch) => {
+//     return {
+//         updateMessageText: (messageText) => {
+//             dispatch(updateNewMessageActionCreator(messageText))
+//         },
+//         sendMessage: () => {
+//             dispatch(addMessageActionCreator());
+//         }
+//     }
+// }
 
-export const SendMessageContainer = connect(mapStateToProps, mapDispatchToProps)(SendMessage)
+export const SendMessageContainer = connect(mapStateToProps, {
+    updateMessageText,
+    sendMessage
+})(SendMessage)

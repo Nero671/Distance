@@ -1,6 +1,6 @@
 import React from "react";
 import "./feed.css";
-import {addPostActionCreator, updateNewPostActionCreator} from "../../redux/feedPageReducer";
+import {addPost, updateNewPost} from "../../redux/feedPageReducer";
 import {HeaderPosts} from "./HeaderPosts";
 import {connect} from "react-redux";
 
@@ -37,18 +37,7 @@ let mapStateToProps = (state) => {
     }
 }
 
-let mapDispatchToProps = (dispatch) => {
-    return {
-        updateNewPost: (postValue) => {
-            dispatch(updateNewPostActionCreator(postValue))
-        },
-
-        addPost: () => {
-            dispatch(addPostActionCreator())
-        }
-    }
-}
-
-
-
-export const HeaderPostsContainer = connect(mapStateToProps, mapDispatchToProps) (HeaderPosts)
+export const HeaderPostsContainer = connect(mapStateToProps, {
+    updateNewPost,
+    addPost
+}) (HeaderPosts)

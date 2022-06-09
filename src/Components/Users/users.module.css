@@ -17,6 +17,10 @@
     align-items: center;
 }
 
+.userAvatar {
+    cursor: pointer;
+}
+
 .userAvatar img {
     width: 85px;
     height: 85px;

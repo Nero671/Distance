@@ -18,7 +18,7 @@ class UsersAPIComponent extends React.Component {
         const instance = axios.create({
             baseURL: 'https://social-network.samuraijs.com/api/1.0/users',
             headers: {
-                "API-KEY": "533e11da-39eb-4d19-8caf-c64003bfe003"
+                "API-KEY": "26526e74-78f1-4b91-a932-789991fffe28"
             },
             withCredentials: true,
         });

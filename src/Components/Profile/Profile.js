@@ -2,18 +2,24 @@ import React from "react";
 import "./profile.css";
 import Gift from "../../image/gift.svg";
 import User from "../../image/user.svg";
-import {UserInfoList} from "../UserInfoList/UserInfoList";
+import {UserInfoList} from "./UserInfoList/UserInfoList";
 import {Friends} from "./Friends/Friends";
+import Preloader from "../Common/Preloader/Preloader";
 
-export const Profile = ({ friend }) => {
+export const Profile = ({ friend, profile }) => {
     let friendList = friend.map((item, index) => <Friends key={index} name={item.userName} />);
+
+    if (!profile) {
+        return <Preloader />
+    }
+
     return (
         <div className="user-wrapper">
             <div className="post">
                 <div className="user-post">
                     <div className="user-post__item">
                         <div className="post-user__img-wrapper">
-                            <img className="post-user__img" src={User} alt="User"/>
+                            <img className="post-user__img" src={profile.photos.large ? profile.photos.large : User} alt="User"/>
                         </div>
                     </div>
                     <div className="user-post__item">

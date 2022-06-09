@@ -1,3 +1,5 @@
+const SET_USER_PROFILE = 'SET_USER_PROFILE';
+
 let initialState = {
     friendsData: [
         {id: 1, userName: 'Wanda'},
@@ -5,11 +7,23 @@ let initialState = {
         {id: 3, userName: 'Steven'},
         {id: 4, userName: 'Peter'},
     ],
+    profile: null,
 };
 
 const profilePageReducer = (state = initialState, action) => {
 
-    return state
+    switch (action.type) {
+        case SET_USER_PROFILE: {
+            return {
+                ...state,
+                profile: action.profile
+            };
+        }
+        default:
+            return state
+    }
 }
+
+export const setUserProfile = (profile) => ({type: SET_USER_PROFILE, profile})
 
 export default profilePageReducer;

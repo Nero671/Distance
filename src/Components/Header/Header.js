@@ -2,10 +2,11 @@ import React from "react";
 import "./header.css";
 import Search from "../../image/search.svg";
 import User from "../../image/user.svg";
+import {Link} from "react-router-dom";
 
 // export const userName = document.querySelector('.user-name').textContent;
 
-export const Header = () => {
+export const Header = (props) => {
     return (
         <header>
             <div className="container">
@@ -15,12 +16,20 @@ export const Header = () => {
                         <button type="submit" className="search-btn"><img src={Search} alt="Search" /></button>
                     </form>
                     <div className="nav">
-                        <div className="user">
-                            <img src={User} alt="Avatar" className="user-avatar" />
+                        { props.isAuth
+                            ?
+                            <div className="user">
+                                <img src={User} alt="Avatar" className="user-avatar" />
+                                <span className="user-name">
+                                  {props.login}
+                                </span>
+                            </div>
+                            :
                             <span className="user-name">
-                              Stanislav
+                              Login
                             </span>
-                        </div>
+                        }
+
                         <div className="nav-menu">
                             <a href="#" className="nav-link">
                                 Home

@@ -14,10 +14,12 @@ export const ProfileContainerWrapper = (props) => {
     // if (!param.id) {
     //     param.id = 2;
     // }
-
-    console.log(param)
+    //
+    // console.log(param)
 
     useEffect(() => {
+
+
 
         axios.get(`https://social-network.samuraijs.com/api/1.0/profile/${param.id}`)
 

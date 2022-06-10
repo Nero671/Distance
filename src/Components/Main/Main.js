@@ -18,6 +18,9 @@ export const Main = () => {
                             <Route path="/messages/*"
                                    element={<DialogContainer />}
                             />
+                            <Route path="/profile/"
+                                   element={<FeedContainer />}
+                            />
                             <Route path="/profile/:id"
                                    element={<ProfileContainer />}
                             />
@@ -29,7 +32,7 @@ export const Main = () => {
                             {/*       element={<ProfileContainer />}*/}
                             {/*/>*/}
                         </Routes>
-                        <ProfileContainer />
+                        {/*<ProfileContainer />*/}
                     </div>
                 </div>
             </main>

@@ -4,26 +4,39 @@ import {connect} from "react-redux";
 import {Profile} from "./Profile";
 import axios from "axios";
 import {setUserProfile} from "../../redux/profilePageReducer";
+import { useEffect } from "react";
+import {useParams} from "react-router-dom";
 
-class ProfileContainerWrapper extends React.Component {
-    debugger;
-    componentDidMount() {
+export const ProfileContainerWrapper = (props) => {
 
-        axios.get(`https://social-network.samuraijs.com/api/1.0/profile/2`)
+    const param = useParams();
+
+    // if (!param.id) {
+    //     param.id = 2;
+    // }
+
+    console.log(param)
+
+    useEffect(() => {
+
+        axios.get(`https://social-network.samuraijs.com/api/1.0/profile/${param.id}`)
 
             .then(response => {
-                this.props.setUserProfile(response.data)
+                props.setUserProfile(response.data)
             })
-    }
 
-    render() {
-        return (
-            <Profile
-                {...this.props}
-                profile={this.props.profile}
-            />
-        )
-    }
+            .catch(err => {
+                console.log(err);
+            });
+    })
+
+    return (
+        <Profile
+            {...props}
+            profile={props.profile}
+        />
+    )
+
 }
 
 let mapStateToProps = (state) => {

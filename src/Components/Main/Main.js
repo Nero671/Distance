@@ -6,6 +6,8 @@ import {FeedContainer} from "../Feed/FeedContainerr";
 import {DialogContainer} from "../Dialogs/DialogContainer";
 import {ProfileContainer} from "../Profile/ProfileContainer";
 import {UsersContainer} from "../Users/UsersContainer";
+import {MainProfile} from "../Profile/MainProfile";
+import {MainProfileContainer} from "../Profile/MainProfileContainer";
 
 export const Main = () => {
     return (
@@ -32,7 +34,7 @@ export const Main = () => {
                             {/*       element={<ProfileContainer />}*/}
                             {/*/>*/}
                         </Routes>
-                        {/*<ProfileContainer />*/}
+                        <MainProfileContainer />
                     </div>
                 </div>
             </main>

@@ -3,10 +3,10 @@ import {connect} from "react-redux";
 
 import axios from "axios";
 import { useEffect } from "react";
-import {Header} from "./Header";
 import {setAuthUserData} from "../../redux/auth-reducer";
+import {MainProfile} from "./MainProfile";
 
-const HeaderContainerWrapper = (props) => {
+const MainProfileWrapper = (props) => {
 
     useEffect(() => {
         axios.get(`https://social-network.samuraijs.com/api/1.0/auth/me`, {
@@ -23,7 +23,7 @@ const HeaderContainerWrapper = (props) => {
     })
 
     return (
-        <Header
+        <MainProfile
             {...props}
             profile={props.profile}
         />
@@ -35,4 +35,4 @@ const mapStateToProps = (state) => ({
     login: state.auth.login
 });
 
-export const HeaderContainer = connect(mapStateToProps, {setAuthUserData}) (HeaderContainerWrapper)
+export const MainProfileContainer = connect(mapStateToProps, {setAuthUserData}) (MainProfileWrapper)

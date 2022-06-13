@@ -19,17 +19,12 @@ export const ProfileContainerWrapper = (props) => {
 
     useEffect(() => {
 
-
-
         axios.get(`https://social-network.samuraijs.com/api/1.0/profile/${param.id}`)
 
             .then(response => {
-                props.setUserProfile(response.data)
+                props.setUserProfile(response.data);
+                console.log(response.data)
             })
-
-            .catch(err => {
-                console.log(err);
-            });
     })
 
     return (

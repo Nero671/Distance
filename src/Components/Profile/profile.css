@@ -1,5 +1,4 @@
 .user-wrapper {
-    margin-left: 24px;
     max-width: 395px;
     width: 100%;
 }
@@ -31,7 +30,7 @@
 }
 
 .user-post__item:first-child {
-    margin-right: 10px;
+    margin-right: 30px;
 }
 
 .post-user__img-wrapper {
@@ -41,6 +40,7 @@
 .post-user__img {
     width: inherit;
     object-fit: cover;
+    border-radius: 50%;
 }
 
 
@@ -65,6 +65,35 @@
 
 .friend-name {
     font-size: 16px;
+}
+
+.user-profile__wrapper {
+    display: flex;
+    display: flex;
+    width: 100%;
+    max-width: inherit;
+    justify-content: space-between;
+}
+
+.user-page__post {
+    height: 150px;
+}
+
+.about-user span b {
+    color: #0050B3;
+}
+
+.user-page__post:first-of-type {
+    margin-right: 24px;
+}
+
+.user-page__post {
+    justify-content: flex-start;
+}
+
+.user-page__container {
+    width: 100%;
+    max-width: 730px;
 }
 
 

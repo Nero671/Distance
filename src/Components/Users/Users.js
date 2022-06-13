@@ -3,6 +3,7 @@ import styles from "./users.module.css";
 import UnknownUser from "../../image/user.svg";
 import Preloader from "../Common/Preloader/Preloader";
 import {NavLink} from "react-router-dom";
+import axios from "axios";
 
 export const Users = (props) => {
 
@@ -31,10 +32,37 @@ export const Users = (props) => {
                             </div>
                             <div>
                                 { item.followed ? <button onClick={() => {
-                                        props.unfollow(item.id)
+
+                                        axios.delete(`https://social-network.samuraijs.com/api/1.0/follow/${item.id}`,{
+                                            withCredentials: true,
+                                            baseURL: 'https://social-network.samuraijs.com/api/1.0/follow',
+                                            headers: {
+                                                "API-KEY": "26526e74-78f1-4b91-a932-789991fffe28"
+                                            },
+                                        })
+                                            .then(response => {
+                                                if (response.data.resultCode == 0) {
+                                                    props.unfollow(item.id)
+                                                }
+                                            })
+
+
                                     }} className={styles.followBtn}>Unfollow</button> :
                                     <button onClick={() => {
-                                        props.follow(item.id)
+
+                                        axios.post(`https://social-network.samuraijs.com/api/1.0/follow/${item.id}`, {}, {
+                                            withCredentials: true,
+                                            baseURL: 'https://social-network.samuraijs.com/api/1.0/follow',
+                                            headers: {
+                                                "API-KEY": "26526e74-78f1-4b91-a932-789991fffe28"
+                                            },
+                                        })
+                                            .then(response => {
+                                                if (response.data.resultCode == 0) {
+                                                    props.follow(item.id)
+                                                }
+                                            })
+
                                     }} className={styles.followBtn}>Follow</button>
                                 }
 

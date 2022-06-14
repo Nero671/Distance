@@ -76,7 +76,7 @@
 }
 
 .user-page__post {
-    height: 150px;
+    height: auto;
 }
 
 .about-user span b {

@@ -35,42 +35,11 @@ export const Users = (props) => {
                                 { item.followed ?
 
                                     <button disabled={props.followingInProgress.some(id => id === item.id)} onClick={() => {
-                                        props.toggleFollowingProgress(true, item.id);
-                                        axios.delete(`https://social-network.samuraijs.com/api/1.0/follow/${item.id}`,{
-                                            withCredentials: true,
-                                            baseURL: 'https://social-network.samuraijs.com/api/1.0/follow',
-                                            headers: {
-                                                "API-KEY": "26526e74-78f1-4b91-a932-789991fffe28"
-                                            },
-                                        })
-                                            .then(response => {
-                                                if (response.data.resultCode == 0) {
-                                                    props.unfollow(item.id)
-                                                }
-                                                props.toggleFollowingProgress(false, item.id);
-                                            })
-
-
+                                        props.unfollow(item.id)
                                     }} className={styles.followBtn}>Unfollow</button>
-
                                     :
-
                                     <button disabled={props.followingInProgress.some(id => id === item.id)} onClick={() => {
-                                        props.toggleFollowingProgress(true, item.id);
-                                        axios.post(`https://social-network.samuraijs.com/api/1.0/follow/${item.id}`, {}, {
-                                            withCredentials: true,
-                                            baseURL: 'https://social-network.samuraijs.com/api/1.0/follow',
-                                            headers: {
-                                                "API-KEY": "26526e74-78f1-4b91-a932-789991fffe28"
-                                            },
-                                        })
-                                            .then(response => {
-                                                if (response.data.resultCode == 0) {
-                                                    props.follow(item.id)
-                                                }
-                                                props.toggleFollowingProgress(false, item.id);
-                                            })
-
+                                        props.follow(item.id)
                                     }} className={styles.followBtn}>Follow</button>
                                 }
 

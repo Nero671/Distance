@@ -3,23 +3,23 @@ import {connect} from "react-redux";
 
 import axios from "axios";
 import { useEffect } from "react";
-import {setAuthUserData} from "../../redux/auth-reducer";
+import {setAuthUserData, setAuthUserDataSuccess} from "../../redux/auth-reducer";
 import {MainProfile} from "./MainProfile";
 
 const MainProfileWrapper = (props) => {
 
     useEffect(() => {
-        axios.get(`https://social-network.samuraijs.com/api/1.0/auth/me`, {
-            withCredentials: true
-        })
-
-            .then(response => {
-                if (response.data.resultCode === 0) {
-                    let {id, email, login} = response.data.data;
-                    props.setAuthUserData(id, email, login)
-                }
-            })
-
+        // axios.get(`https://social-network.samuraijs.com/api/1.0/auth/me`, {
+        //     withCredentials: true
+        // })
+        //
+        //     .then(response => {
+        //         if (response.data.resultCode === 0) {
+        //             let {id, email, login} = response.data.data;
+        //             props.setAuthUserData(id, email, login)
+        //         }
+        //     })
+        setAuthUserDataSuccess();
     })
 
     return (
@@ -35,4 +35,4 @@ const mapStateToProps = (state) => ({
     login: state.auth.login
 });
 
-export const MainProfileContainer = connect(mapStateToProps, {setAuthUserData}) (MainProfileWrapper)
+export const MainProfileContainer = connect(mapStateToProps, {setAuthUserDataSuccess, setAuthUserData}) (MainProfileWrapper)

@@ -3,9 +3,10 @@ import "./profile.css";
 import {connect} from "react-redux";
 import {Profile} from "./Profile";
 import axios from "axios";
-import {setUserProfile} from "../../redux/profilePageReducer";
+import {setUserProfile, setUserProfileThunk} from "../../redux/profilePageReducer";
 import { useEffect } from "react";
 import {useParams} from "react-router-dom";
+import {usersAPI} from "../../api/Api";
 
 export const ProfileContainerWrapper = (props) => {
 
@@ -19,11 +20,10 @@ export const ProfileContainerWrapper = (props) => {
 
     useEffect(() => {
 
-        axios.get(`https://social-network.samuraijs.com/api/1.0/profile/${param.id}`)
+        usersAPI.getUserProfile(param.id)
 
             .then(response => {
                 props.setUserProfile(response.data);
-                console.log(response.data)
             })
     })
 
@@ -44,5 +44,6 @@ let mapStateToProps = (state) => {
 }
 
 export let ProfileContainer = connect(mapStateToProps, {
-    setUserProfile
+    setUserProfile,
+    setUserProfileThunk
 }) (ProfileContainerWrapper)

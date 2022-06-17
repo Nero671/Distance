@@ -1,3 +1,6 @@
+import {usersAPI} from "../api/Api";
+import {toggleFollowingProgress, unfollowSuccess} from "./usersReducers";
+
 const SET_USER_PROFILE = 'SET_USER_PROFILE';
 
 let initialState = {
@@ -24,6 +27,16 @@ const profilePageReducer = (state = initialState, action) => {
     }
 }
 
-export const setUserProfile = (profile) => ({type: SET_USER_PROFILE, profile})
+export const setUserProfile = (profile) => ({type: SET_USER_PROFILE, profile});
+
+export const setUserProfileThunk = (userId) => {
+    return (dispatch) => {
+        usersAPI.getUserProfile(userId)
+            .then(response => {
+                dispatch(setUserProfile(response.data));
+            })
+
+    }
+}
 
 export default profilePageReducer;

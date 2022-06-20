@@ -10,8 +10,6 @@ export const Feed = ({ posts, isAuth }) => {
 
     let postElements = posts.map((item, index) => <CreatePost key={index} message={item.message} likes={item.likesCount} />)
 
-    if (!isAuth) return <Navigate to="/login"/>
-
     return (
         <>
             <div className="main-feed">

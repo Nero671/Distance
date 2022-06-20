@@ -2,6 +2,11 @@ import React from "react";
 import "./feed.css";
 import {connect} from "react-redux";
 import {Feed} from "./Feed";
+import {Navigate} from "react-router-dom";
+import {withAuthRedirect} from "../hoc/WithAuthRedirect";
+import {compose} from "redux";
+
+
 
 let mapStateToProps = (state) => {
     return {
@@ -10,4 +15,7 @@ let mapStateToProps = (state) => {
     }
 }
 
-export const FeedContainer = connect(mapStateToProps) (Feed)
+export const FeedContainer = compose(
+    connect(mapStateToProps),
+    withAuthRedirect
+)(Feed)

@@ -5,7 +5,8 @@ import {Feed} from "./Feed";
 
 let mapStateToProps = (state) => {
     return {
-        posts: state.feedPage.postData
+        posts: state.feedPage.postData,
+        isAuth: state.auth.isAuth
     }
 }
 

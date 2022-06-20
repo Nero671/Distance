@@ -6,7 +6,8 @@ import {Dialogs} from "./Dialogs";
 let mapPropsToState = (state) => {
     return {
         messages: state.dialogsPage.messagesData,
-        dialog: state.dialogsPage.dialogsData
+        dialog: state.dialogsPage.dialogsData,
+        isAuth: state.auth.isAuth
     }
 }
 

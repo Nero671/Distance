@@ -8,6 +8,7 @@ import {ProfileContainer} from "../Profile/ProfileContainer";
 import {UsersContainer} from "../Users/UsersContainer";
 import {MainProfile} from "../Profile/MainProfile";
 import {MainProfileContainer} from "../Profile/MainProfileContainer";
+import {Login} from "../Login/Login";
 
 export const Main = () => {
     return (
@@ -29,6 +30,10 @@ export const Main = () => {
 
                             <Route path="/users"
                                    element={<UsersContainer />}
+                            />
+
+                            <Route path="/login"
+                                   element={<Login />}
                             />
                             {/*<Route path="/userProfile/*"*/}
                             {/*       element={<ProfileContainer />}*/}

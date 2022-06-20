@@ -3,9 +3,7 @@ import {connect} from "react-redux";
 import {
     follow, getUsersThunkCreator,
     setCurrentPage,
-    setUsers,
-    setUsersTotalCount, toggleFollowingProgress,
-    toggleIsFetching,
+    toggleFollowingProgress,
     unfollow
 } from "../../redux/usersReducers";
 import axios from "axios";

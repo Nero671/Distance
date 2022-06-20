@@ -6,27 +6,21 @@ import { useEffect } from "react";
 import {setAuthUserData, setAuthUserDataSuccess} from "../../redux/auth-reducer";
 import {MainProfile} from "./MainProfile";
 
-const MainProfileWrapper = (props) => {
+class MainProfileWrapper extends React.Component  {
 
-    useEffect(() => {
-         axios.get(`https://social-network.samuraijs.com/api/1.0/auth/me`, {
-             withCredentials: true
-         })
+    componentDidMount()  {
+        this.props.setAuthUserData();
+    }
 
-             .then(response => {
-                 if (response.data.resultCode === 0) {
-                     let {id, email, login} = response.data.data;
-                     props.setAuthUserDataSuccess(id, email, login)
-                 }
-             })
-    })
+    render() {
+        return (
+            <MainProfile
+                {...this.props}
+                profile={this.props.profile}
+            />
+        )
+    }
 
-    return (
-        <MainProfile
-            {...props}
-            profile={props.profile}
-        />
-    )
 }
 
 const mapStateToProps = (state) => ({

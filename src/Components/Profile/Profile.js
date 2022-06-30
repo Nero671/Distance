@@ -8,7 +8,7 @@ import Preloader from "../Common/Preloader/Preloader";
 import {Feed} from "../Feed/Feed";
 import {FeedContainer} from "../Feed/FeedContainerr";
 
-export const Profile = ({ friend, profile, posts }) => {
+export const Profile = ({ friend, profile, posts, status }) => {
     let friendList = friend.map((item, index) => <Friends key={index} name={item.userName} />);
 
     if (!profile) {
@@ -31,7 +31,7 @@ export const Profile = ({ friend, profile, posts }) => {
                             </h1>
                             <ul className="user-info__list">
                                 <li className="about-user">
-                                    {profile.aboutMe ? profile.aboutMe : <span>Hi, I'm <b>{profile.fullName}.</b> Nice to meet you!</span>}
+                                    {status ? status : <span>Hi, I'm <b>{profile.fullName}.</b> Nice to meet you!</span>}
                                 </li>
                             </ul>
                         </div>

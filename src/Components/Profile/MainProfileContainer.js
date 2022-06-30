@@ -1,10 +1,9 @@
 import React from "react";
 import {connect} from "react-redux";
 
-import axios from "axios";
-import { useEffect } from "react";
 import {setAuthUserData, setAuthUserDataSuccess} from "../../redux/auth-reducer";
 import {MainProfile} from "./MainProfile";
+import {getStatusThunk, updateStatusThunk} from "../../redux/profilePageReducer";
 
 class MainProfileWrapper extends React.Component  {
 
@@ -17,6 +16,8 @@ class MainProfileWrapper extends React.Component  {
             <MainProfile
                 {...this.props}
                 profile={this.props.profile}
+                status={this.props.status}
+                updateStatus={this.props.updateStatus}
             />
         )
     }
@@ -25,7 +26,15 @@ class MainProfileWrapper extends React.Component  {
 
 const mapStateToProps = (state) => ({
     isAuth: state.auth.isAuth,
-    login: state.auth.login
+    login: state.auth.login,
+    status: state.profilePage.status
 });
 
-export const MainProfileContainer = connect(mapStateToProps, {setAuthUserDataSuccess, setAuthUserData}) (MainProfileWrapper)
+export const MainProfileContainer = connect(mapStateToProps,
+    {
+        setAuthUserDataSuccess,
+        setAuthUserData,
+        getStatusThunk,
+        updateStatusThunk
+    })
+(MainProfileWrapper)

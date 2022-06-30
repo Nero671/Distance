@@ -2,11 +2,10 @@ import React from "react";
 import "./profile.css";
 import {connect} from "react-redux";
 import {Profile} from "./Profile";
-import axios from "axios";
-import {setUserProfile, setUserProfileThunk} from "../../redux/profilePageReducer";
+import {setStatus, setUserProfile, setUserProfileThunk} from "../../redux/profilePageReducer";
 import { useEffect } from "react";
 import {useParams} from "react-router-dom";
-import {usersAPI} from "../../api/Api";
+import {profileAPI, usersAPI} from "../../api/Api";
 
 export const ProfileContainerWrapper = (props) => {
 
@@ -20,10 +19,15 @@ export const ProfileContainerWrapper = (props) => {
 
     useEffect(() => {
 
-        usersAPI.getUserProfile(param.id)
+        profileAPI.getUserProfile(param.id)
 
             .then(response => {
                 props.setUserProfile(response.data);
+            })
+
+        profileAPI.getStastus(param.id)
+            .then(response => {
+                props.setStatus(response.data);
             })
     })
 
@@ -31,6 +35,8 @@ export const ProfileContainerWrapper = (props) => {
         <Profile
             {...props}
             profile={props.profile}
+            status={props.status}
+            updateStatus={props.updateStatus}
         />
     )
 
@@ -39,11 +45,13 @@ export const ProfileContainerWrapper = (props) => {
 let mapStateToProps = (state) => {
     return {
         friend: state.profilePage.friendsData,
-        profile: state.profilePage.profile
+        profile: state.profilePage.profile,
+        status: state.profilePage.status
     }
 }
 
 export let ProfileContainer = connect(mapStateToProps, {
     setUserProfile,
-    setUserProfileThunk
+    setUserProfileThunk,
+    setStatus,
 }) (ProfileContainerWrapper)

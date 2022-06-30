@@ -1,7 +1,8 @@
-import {usersAPI} from "../api/Api";
+import {profileAPI, usersAPI} from "../api/Api";
 import {toggleFollowingProgress, unfollowSuccess} from "./usersReducers";
 
 const SET_USER_PROFILE = 'SET_USER_PROFILE';
+const SET_STATUS = 'SET_STATUS';
 
 let initialState = {
     friendsData: [
@@ -11,6 +12,7 @@ let initialState = {
         {id: 4, userName: 'Peter'},
     ],
     profile: null,
+    status: '',
 };
 
 const profilePageReducer = (state = initialState, action) => {
@@ -22,12 +24,21 @@ const profilePageReducer = (state = initialState, action) => {
                 profile: action.profile
             };
         }
+
+        case SET_STATUS: {
+            return {
+                ...state,
+                status: action.status
+            };
+        }
+
         default:
             return state
     }
 }
 
 export const setUserProfile = (profile) => ({type: SET_USER_PROFILE, profile});
+export const setStatus = (status) => ({type: SET_STATUS, status});
 
 export const setUserProfileThunk = (userId) => {
     return (dispatch) => {
@@ -37,6 +48,22 @@ export const setUserProfileThunk = (userId) => {
             })
 
     }
+}
+
+export const updateStatusThunk = (status) => (dispatch) => {
+    profileAPI.updateStatus(status)
+        .then(response => {
+            if (response.data.resultCode === 0) {
+                dispatch(setStatus(status));
+            }
+        })
+}
+
+export const getStatusThunk = (userId) => (dispatch) => {
+    profileAPI.updateStatus(userId)
+        .then(response => {
+            dispatch(setStatus(response.data));
+        })
 }
 
 export default profilePageReducer;

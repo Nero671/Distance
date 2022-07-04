@@ -6,9 +6,7 @@ import {
     toggleFollowingProgress,
     unfollow
 } from "../../redux/usersReducers";
-import axios from "axios";
 import {Users} from "./Users";
-import {usersAPI} from "../../api/Api";
 
 
 class UsersAPIComponent extends React.Component {

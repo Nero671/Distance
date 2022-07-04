@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$USER_HOME$/Downloads/(EXAMPLE)material/.idea/(EXAMPLE)material.iml" filepath="$USER_HOME$/Downloads/(EXAMPLE)material/.idea/(EXAMPLE)material.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/react-study.iml" filepath="$PROJECT_DIR$/.idea/react-study.iml" />
     </modules>
   </component>

@@ -57,6 +57,9 @@
 
 .add-file {
     cursor: pointer;
+    width: 20px;
+    height: 30px;
+    background: url("../../image/addFile.svg") no-repeat center top;
 }
 
 .send-message {
@@ -98,3 +101,15 @@
 /*    background: url("../../image/user.svg") no-repeat center top / cover;*/
 /*    margin-right: 20px;*/
 /*}*/
+
+.input-file {
+    visibility: hidden;
+}
+
+.fileName {
+    bottom: 14px;
+    font-size: 10px;
+    display: block;
+    color: #8C8C8C;
+    padding: 3px 10px;
+}

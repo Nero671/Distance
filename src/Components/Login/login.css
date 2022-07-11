@@ -63,6 +63,10 @@
     cursor: pointer;
 }
 
+.form__btn:disabled {
+    background-color: #cecece;
+}
+
 .form__registration {
     color: rgba(0, 0, 0, 0.3);
     font-size: 19px;
@@ -201,4 +205,10 @@
 
 .active {
     display: block;
+}
+
+form div {
+    color: red;
+    padding: 10px 0;
+    font-weight: bold;
 }

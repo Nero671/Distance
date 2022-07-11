@@ -21,8 +21,9 @@ export const LoginForm = (props) => {
             onSubmit={(values) => {
                 console.log(values)
             }}
-            validationSchema={loginFormSchema}>
-            {() => (
+            validationSchema={loginFormSchema}
+            >
+            {({dirty, isValid}) => (
                 <Form className="registration" action="index.html" method="post">
                     <label className="pure-material-textfield-outlined">
                         <Field type={"text"} name={"email"} placeholder=" " id="email" className="form__input" />
@@ -34,15 +35,20 @@ export const LoginForm = (props) => {
                         <span>Password</span>
                     </label>
                     <ErrorMessage name="password" component="div"/>
+                    <label className="pure-material-textfield-outlined">
+                        <Field type={"password"} name={"confirmPassword"} placeholder=" " id="confirmPassword" className="form__input" />
+                        <span>Confirm Password</span>
+                    </label>
+                    <ErrorMessage name="confirmPassword" component="div"/>
                     {/*<label className="pure-material-textfield-outlined hidden">*/}
                     {/*    <input type="password" name="email" placeholder=" " required id="email" className="form__input">*/}
                     {/*        <span>Password</span>*/}
                     {/*</label>*/}
                     <label>
-                        <Field  type={"checkbox"} /> remember me
+                        <Field  type={"checkbox"} name={'rememberMe'} /> remember me
                     </label>
 
-                    <button type="submit" name="button" className="form__btn">
+                    <button disabled={!dirty && !isValid} type="submit" name="button" className="form__btn">
                         Sign Up
                     </button>
                 </Form>

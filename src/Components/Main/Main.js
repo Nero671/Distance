@@ -8,7 +8,7 @@ import {ProfileContainer} from "../Profile/ProfileContainer";
 import {UsersContainer} from "../Users/UsersContainer";
 import {MainProfile} from "../Profile/MainProfile";
 import {MainProfileContainer} from "../Profile/MainProfileContainer";
-import {Login} from "../Login/Login";
+import {Login, LoginContainer} from "../Login/Login";
 
 export const Main = () => {
     return (

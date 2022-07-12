@@ -28,6 +28,7 @@
 .dialog-user-name > .active {
     color: #003A8C;
     font-size: 21px;
+    display: inline;
 }
 
 .dialog-user {

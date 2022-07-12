@@ -1,14 +1,14 @@
 import React from "react";
 import {connect} from "react-redux";
 
-import {setAuthUserData, setAuthUserDataSuccess} from "../../redux/auth-reducer";
+import {getAuthUserData, setAuthUserDataSuccess} from "../../redux/auth-reducer";
 import {MainProfile} from "./MainProfile";
 import {getStatusThunk, updateStatusThunk} from "../../redux/profilePageReducer";
 
 class MainProfileWrapper extends React.Component  {
 
     componentDidMount()  {
-        this.props.setAuthUserData();
+        this.props.getAuthUserData();
     }
 
     render() {
@@ -33,7 +33,7 @@ const mapStateToProps = (state) => ({
 export const MainProfileContainer = connect(mapStateToProps,
     {
         setAuthUserDataSuccess,
-        setAuthUserData,
+        getAuthUserData,
         getStatusThunk,
         updateStatusThunk
     })

@@ -3,6 +3,7 @@ import "./header.css";
 import Search from "../../image/search.svg";
 import User from "../../image/user.svg";
 import {Link} from "react-router-dom";
+import {logout} from "../../redux/auth-reducer";
 
 // export const userName = document.querySelector('.user-name').textContent;
 
@@ -21,7 +22,7 @@ export const Header = (props) => {
                             <div className="user">
                                 <img src={User} alt="Avatar" className="user-avatar" />
                                 <span className="user-name">
-                                  {props.login}
+                                  {props.login} - <button onClick={props.logout}>Log out</button>
                                 </span>
                             </div>
                             :

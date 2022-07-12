@@ -75,7 +75,6 @@ export const SendMessage = ({ newMessageText, sendMessage, updateMessageText }) 
 
             {(values, errors) => (
                 <Form className="send-message">
-                    {console.log(values.values.file)}
                     <FieldArray name={'file'}>
                         {(arrayHelper) => (
                             <>

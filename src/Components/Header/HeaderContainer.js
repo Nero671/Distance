@@ -4,14 +4,14 @@ import {connect} from "react-redux";
 import axios from "axios";
 import { useEffect } from "react";
 import {Header} from "./Header";
-import {setAuthUserData, setAuthUserDataSuccess} from "../../redux/auth-reducer";
+import {getAuthUserData, logout, setAuthUserDataSuccess} from "../../redux/auth-reducer";
 import {usersAPI} from "../../api/Api";
 
 const HeaderContainerWrapper = (props) => {
 
-    useEffect(() => {
-        setAuthUserData();
-    });
+    // useEffect(() => {
+    //     setAuthUserData();
+    // });
 
     return (
         <Header
@@ -26,4 +26,4 @@ const mapStateToProps = (state) => ({
     login: state.auth.login
 });
 
-export const HeaderContainer = connect(mapStateToProps, {setAuthUserDataSuccess, setAuthUserData}) (HeaderContainerWrapper)
+export const HeaderContainer = connect(mapStateToProps, {setAuthUserDataSuccess, getAuthUserData, logout}) (HeaderContainerWrapper)

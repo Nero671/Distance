@@ -23,12 +23,12 @@ const MenuItem = ({ path, title, icon }) => {
 export const Sidebar = () => {
     return (
         <div className="menu-sidebar">
-            <div className="user">
-                <img src={User} alt="Avatar" className="sidebar-avatar"/>
-                <span className="user-name">
-                  Kachalko Stanislav
-                </span>
-            </div>
+            {/*<div className="user">*/}
+            {/*    <img src={User} alt="Avatar" className="sidebar-avatar"/>*/}
+            {/*    <span className="user-name">*/}
+            {/*      Kachalko Stanislav*/}
+            {/*    </span>*/}
+            {/*</div>*/}
             <nav className="nav-group">
                 <MenuItem path={"/profile"} icon={Profile} title="Profile"/>
                 <MenuItem path={"/users"} icon={Users} title="Users"/>

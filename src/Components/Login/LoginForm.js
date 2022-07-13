@@ -25,13 +25,14 @@ const LoginForm = ({login, isAuth}) => {
                 }
                 return errors;
             }}
-            onSubmit={(values) => {
-                login(values.email, values.password, values.rememberMe);
-                console.log(values);
+            onSubmit={(values, {setSubmitting, setStatus}) => {
+                console.log(setStatus)
+                login(values.email, values.password, values.rememberMe, setStatus);
+                setSubmitting(false);
             }}
             validationSchema={loginFormSchema}
         >
-            {({dirty, isValid}) => (
+            {({dirty, isValid, status}) => (
                 <Form className="registration" action="index.html" method="post">
                     <label className="pure-material-textfield-outlined">
                         <Field type={"text"} name={"email"} placeholder=" " id="email" className="form__input" />
@@ -43,6 +44,10 @@ const LoginForm = ({login, isAuth}) => {
                         <span>Password</span>
                     </label>
                     <ErrorMessage name="password" component="div"/>
+                    <div>
+                        {status}
+                    </div>
+
                     {/*<label className="pure-material-textfield-outlined">*/}
                     {/*    <Field type={"password"} name={"confirmPassword"} placeholder=" " id="confirmPassword" className="form__input" />*/}
                     {/*    <span>Confirm Password</span>*/}
@@ -58,7 +63,6 @@ const LoginForm = ({login, isAuth}) => {
                 </Form>
             )}
         </Formik>
-
     )
 }
 

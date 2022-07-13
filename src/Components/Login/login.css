@@ -58,7 +58,7 @@
     color: #fff;
     text-transform: uppercase;
     padding: 20px 176px;
-    margin-top: 53px;
+    margin-top: 40px;
     border: none;
     cursor: pointer;
 }
@@ -211,4 +211,9 @@ form div {
     color: red;
     padding: 10px 0;
     font-weight: bold;
+}
+
+.loginWrapper {
+    width: 100%;
+    margin-top: 9%;
 }

@@ -9,7 +9,7 @@ export const Login = (props) => {
 
     return (
         <>
-            <div>
+            <div className={'loginWrapper'}>
                 <h1 className="login">Distance</h1>
                 <LoginFormContainer />
             </div>

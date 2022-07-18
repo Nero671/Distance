@@ -1,5 +1,6 @@
 const ADD_POST = 'ADD-POST';
 const UPDATE_NEW_POST_TEXT = 'UPDATE-NEW-POST-TEXT';
+const DELETE_POST = 'DELETE_POST';
 
 let initialState = {
     postData: [
@@ -31,6 +32,13 @@ const feedPageReducer = (state = initialState, action) => {
                 newPostText: action.newText
             };
         }
+
+        case DELETE_POST: {
+            return  {
+                ...state,
+                postData: state.postData.filter(item => item.id != action.postId)
+            }
+        }
         default:
             return state
     }
@@ -40,5 +48,8 @@ export const addPost = () => ({ type: ADD_POST });
 
 export const updateNewPost = (postValue) =>
     ({ type: UPDATE_NEW_POST_TEXT, newText: postValue });
+
+export const deletePost = (postId) => ({ type: DELETE_POST, postId });
+
 
 export default feedPageReducer;

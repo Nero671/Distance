@@ -64,13 +64,11 @@ import {Provider} from "react-redux";
 // }
 
 
-const rerenderEntireTree = (state) => {
+const rerenderEntireTree = () => {
     ReactDOM.render(
         // <React.StrictMode>
             <Provider store={store}>
-                <App
-                    friend={state.profilePage.friendsData}
-                />
+                <App />
             </Provider>,
         // </React.StrictMode>,
         document.getElementById('root')

@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useEffect} from "react";
 import "./main.css";
 import {Sidebar} from "../Sidebar/Sidebar";
 import {BrowserRouter, Navigate, Route, Routes} from "react-router-dom";
@@ -9,8 +9,14 @@ import {UsersContainer} from "../Users/UsersContainer";
 import {MainProfile} from "../Profile/MainProfile";
 import {MainProfileContainer} from "../Profile/MainProfileContainer";
 import {Login} from "../Login/Login";
+import {getAuthUserData} from "../../redux/auth-reducer";
 
-export const Main = ({isAuth}) => {
+export const Main = ({isAuth, getAuthUserData}) => {
+
+    useEffect(() => {
+        getAuthUserData();
+    })
+
 
     return (
         <BrowserRouter>

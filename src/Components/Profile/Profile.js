@@ -1,11 +1,8 @@
 import React from "react";
 import "./profile.css";
-import Gift from "../../image/gift.svg";
 import User from "../../image/user.svg";
-import {UserInfoList} from "./UserInfoList/UserInfoList";
 import {Friends} from "./Friends/Friends";
 import Preloader from "../Common/Preloader/Preloader";
-import {Feed} from "../Feed/Feed";
 import {FeedContainer} from "../Feed/FeedContainerr";
 
 export const Profile = ({ friend, profile, posts, status }) => {

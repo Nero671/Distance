@@ -5,6 +5,7 @@ import User from "../../image/user.svg";
 import {UserInfoList} from "./UserInfoList/UserInfoList";
 import ProfileStatus from "./ProfileStatus";
 
+
 export const MainProfile = (props) => {
 
     return (

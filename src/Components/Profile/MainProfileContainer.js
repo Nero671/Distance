@@ -1,10 +1,8 @@
 import React from "react";
 import {connect} from "react-redux";
-
 import {getAuthUserData, setAuthUserDataSuccess} from "../../redux/auth-reducer";
 import {MainProfile} from "./MainProfile";
 import {getStatusThunk, updateStatusThunk} from "../../redux/profilePageReducer";
-import {Navigate} from "react-router-dom";
 
 class MainProfileWrapper extends React.Component  {
 

@@ -4,7 +4,7 @@ import {DialogUserName} from "./DialogsItem/DialogsItem";
 import {Message} from "./Messages/Message";
 import {SendMessageContainer} from "./sendMessage/SendMessageContainer";
 
-export const Dialogs = ({ messages, dialog, isAuth }) => {
+export const Dialogs = ({ messages, dialog }) => {
 
     let dialogsElements = dialog.map((item, index) => <DialogUserName key={index} name={item.name} id={item.id} />)
     let messagesElements = messages.map((item, index) => <Message key={index} name={item.userProfile} message={item.message} id={item.id}/>)

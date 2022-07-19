@@ -1,7 +1,6 @@
 import {authAPI, usersAPI} from "../api/Api";
-import {setStatus} from "./profilePageReducer";
 
-const SET_USER_DATA = 'SET_USER_DATA';
+const SET_USER_DATA = 'auth/SET_USER_DATA';
 
 let initialState = {
     userId: null,
@@ -28,27 +27,23 @@ const authReducer = (state = initialState, action) => {
 export const setAuthUserDataSuccess = (userId, email, login, isAuth) => ({type: SET_USER_DATA, payload: {userId, email, login, isAuth}})
 
 export const getAuthUserData = () => {
-    return (dispatch) => {
-        usersAPI.getAuthProfile()
-            .then(response => {
-                if (response.data.resultCode === 0) {
-                    let {id, email, login} = response.data.data;
-                    dispatch(setAuthUserDataSuccess(id, email, login, true));
-                }
-            })
+    return async (dispatch) => {
+        let response = await usersAPI.getAuthProfile();
+            if (response.data.resultCode === 0) {
+                let {id, email, login} = response.data.data;
+                dispatch(setAuthUserDataSuccess(id, email, login, true));
+            }
     }
 }
 
-export const login = (email, password, rememberMe, setStatus) => (dispatch) => {
+export const login = (email, password, rememberMe, setStatus) => async (dispatch) => {
+        let response = await authAPI.login(email, password, rememberMe, setStatus);
 
-        authAPI.login(email, password, rememberMe, setStatus)
-            .then(response => {
-                if (response.data.resultCode === 0) {
-                    dispatch(getAuthUserData())
-                } else {
-                    setStatus(response.data.messages);
-                }
-            })
+        if (response.data.resultCode === 0) {
+            dispatch(getAuthUserData())
+        } else {
+            setStatus(response.data.messages);
+        }
 }
 
 export const logout = () => (dispatch) => {

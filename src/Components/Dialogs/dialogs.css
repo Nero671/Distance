@@ -93,16 +93,6 @@
     background: none;
 }
 
-/*.dialog-user::before {*/
-/*    content: '';*/
-/*    width: 30px;*/
-/*    height: 30px;*/
-/*    border-radius: 50%;*/
-/*    display: flex;*/
-/*    background: url("../../image/user.svg") no-repeat center top / cover;*/
-/*    margin-right: 20px;*/
-/*}*/
-
 .input-file {
     visibility: hidden;
 }

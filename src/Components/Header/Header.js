@@ -2,10 +2,6 @@ import React from "react";
 import "./header.css";
 import Search from "../../image/search.svg";
 import User from "../../image/user.svg";
-import {Link} from "react-router-dom";
-import {logout} from "../../redux/auth-reducer";
-
-// export const userName = document.querySelector('.user-name').textContent;
 
 export const Header = (props) => {
     return (

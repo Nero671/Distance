@@ -1,12 +1,8 @@
 import React from "react";
 import './login.css';
 import {LoginFormContainer} from "./LoginForm";
-import {Navigate} from "react-router-dom";
 
-
-
-export const Login = (props) => {
-
+export const Login = () => {
     return (
         <>
             <div className={'loginWrapper'}>

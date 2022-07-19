@@ -73,10 +73,6 @@
     font-weight: 500;
 }
 
-.selectedPage {
-    font-weight: bold;
-}
-
 .preloader {
     position: absolute;
     z-index: 999;

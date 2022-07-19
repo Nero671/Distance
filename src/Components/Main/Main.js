@@ -1,4 +1,4 @@
-import React, {useEffect} from "react";
+import React, {useEffect, Suspense } from "react";
 import "./main.css";
 import {Sidebar} from "../Sidebar/Sidebar";
 import {BrowserRouter, Navigate, Route, Routes} from "react-router-dom";
@@ -8,9 +8,9 @@ import {ProfileContainer} from "../Profile/ProfileContainer";
 import {UsersContainer} from "../Users/UsersContainer";
 import {MainProfileContainer} from "../Profile/MainProfileContainer";
 import {Login} from "../Login/Login";
+import Preloader from "../Common/Preloader/Preloader";
 
 // const MainProfileContainer = React.lazy(() => import('../Profile/MainProfileContainer'));
-
 
 export const Main = ({isAuth, getAuthUserData}) => {
 
@@ -27,28 +27,32 @@ export const Main = ({isAuth, getAuthUserData}) => {
                         {!isAuth ? <Login /> :
                             <>
                                 <Sidebar/>
-                                <Routes>
-                                    <Route path="/messages/*"
-                                    element={<DialogContainer />}
-                                    />
-                                    <Route path="/profile/"
-                                    element={<FeedContainer />}
-                                    />
-                                    <Route path="/profile/:id"
-                                    element={<ProfileContainer />}
-                                    />
+                                <Suspense fallback={<div><Preloader /></div>}>
+                                    <Routes>
+                                        <Route path="/messages/*"
+                                        element={<DialogContainer />}
+                                        />
+                                        <Route path="/profile/"
+                                        element={<FeedContainer />}
+                                        />
+                                        <Route path="/profile/:id"
+                                        element={<ProfileContainer />}
+                                        />
 
-                                    <Route path="/users"
-                                    element={<UsersContainer />}
-                                    />
+                                        <Route path="/users"
+                                        element={<UsersContainer />}
+                                        />
 
-                                    <Route path="/login"
-                                    element={<Login />}
-                                    />
-                                    {/*<Route path="/userProfile/*"*/}
-                                    {/*       element={<ProfileContainer />}*/}
-                                    {/*/>*/}
-                                </Routes>
+                                            <Route path="/login"
+                                                   element={<Login />}
+                                            />
+
+
+                                        {/*<Route path="/userProfile/*"*/}
+                                        {/*       element={<ProfileContainer />}*/}
+                                        {/*/>*/}
+                                    </Routes>
+                                </Suspense>
                                 <MainProfileContainer />
                             </>
                         }

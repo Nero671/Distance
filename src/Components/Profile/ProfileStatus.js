@@ -4,6 +4,7 @@ import {updateStatusThunk} from "../../redux/profilePageReducer";
 
 const  ProfileStatus = (props) => {
 
+    console.log(props.status)
     let [editMode, setEditMode] = useState(false);
     let [status, setStatus] = useState(props.status);
 

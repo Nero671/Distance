@@ -9,6 +9,9 @@ import {UsersContainer} from "../Users/UsersContainer";
 import {MainProfileContainer} from "../Profile/MainProfileContainer";
 import {Login} from "../Login/Login";
 
+// const MainProfileContainer = React.lazy(() => import('../Profile/MainProfileContainer'));
+
+
 export const Main = ({isAuth, getAuthUserData}) => {
 
     useEffect(() => {

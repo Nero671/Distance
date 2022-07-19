@@ -1,3 +1,29 @@
 .selectedPage {
     font-weight: bold;
+    color: #fff;
+    background: #1890FF;
+    border-radius: 3px;
 }
+
+.paginationWrapper {
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.paginationWrapper span {
+    cursor: pointer;
+    padding: 5px 8px;
+    margin: 0 3px;
+}
+
+.paginationWrapper button {
+    background: #1890FF;
+    border: 1px solid #1890FF;
+    padding: 5px;
+    border-radius: 3px;
+    color: #fff;
+    font-size: 14px;
+}
+

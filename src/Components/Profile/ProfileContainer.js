@@ -20,7 +20,6 @@ export const ProfileContainerWrapper = (props) => {
     useEffect(() => {
 
         profileAPI.getUserProfile(param.id)
-
             .then(response => {
                 props.setUserProfile(response.data);
             })
@@ -36,7 +35,6 @@ export const ProfileContainerWrapper = (props) => {
             {...props}
             profile={props.profile}
             status={props.status}
-            updateStatus={props.updateStatus}
         />
     )
 
@@ -52,6 +50,5 @@ let mapStateToProps = (state) => {
 
 export let ProfileContainer = connect(mapStateToProps, {
     setUserProfile,
-    setUserProfileThunk,
     setStatus,
 }) (ProfileContainerWrapper)

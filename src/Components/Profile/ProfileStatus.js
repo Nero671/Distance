@@ -1,16 +1,20 @@
 import React, {useEffect, useState} from "react";
 import "./profile.css";
-import {updateStatusThunk} from "../../redux/profilePageReducer";
+import {profileAPI} from "../../api/Api";
 
 const  ProfileStatus = (props) => {
-
-    console.log(props.status)
     let [editMode, setEditMode] = useState(false);
     let [status, setStatus] = useState(props.status);
 
     useEffect(() => {
-        setStatus(props.status)
-    }, [props.status])
+
+        profileAPI.getStastus(24359)
+            .then(response => {
+                setStatus(response.data);
+            })
+
+        setStatus(props.status);
+    }, [props.status]);
 
     function activateEditMode() {
         setEditMode(true);
@@ -30,7 +34,7 @@ const  ProfileStatus = (props) => {
                 {!editMode &&
                     <div>
                         <span onDoubleClick={activateEditMode}>
-                            {props.status || 'No Status'}
+                            {status || 'No Status'}
                         </span>
                     </div> }
                 { editMode &&

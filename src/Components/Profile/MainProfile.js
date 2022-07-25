@@ -3,10 +3,10 @@ import "./profile.css";
 import Gift from "../../image/gift.svg";
 import User from "../../image/user.svg";
 import {UserInfoList} from "./UserInfoList/UserInfoList";
-import ProfileStatus from "./ProfileStatus";
+import {MainProfileStatusContainer} from "./ProfileStatusContainer";
 
 
-export const MainProfile = (props) => {
+export const MainProfile = ({login}) => {
 
     return (
         <div className="user-wrapper">
@@ -19,9 +19,9 @@ export const MainProfile = (props) => {
                     </div>
                     <div className="user-post__item">
                         <h1 className="user-post__name">
-                            {props.login}
+                            {login}
                         </h1>
-                        <ProfileStatus status={props.status} updateStatusThunk={props.updateStatusThunk}/>
+                        <MainProfileStatusContainer />
                         <ul className="user-info__list">
                             <UserInfoList />
                         </ul>

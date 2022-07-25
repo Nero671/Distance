@@ -51,7 +51,7 @@ export const setUserProfileThunk = (userId) => {
 
 export const updateStatusThunk = (status) => async (dispatch) => {
     let response = await profileAPI.updateStatus(status);
-    if (response.data.resultCode === 0) {
+    if (response.data.resultCode === 0) {;
         dispatch(setStatus(status));
     }
 }

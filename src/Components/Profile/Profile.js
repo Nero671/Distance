@@ -30,6 +30,9 @@ export const Profile = ({ friend, profile, posts, status }) => {
                                 <li className="about-user">
                                     {status ? status : <span>Hi, I'm <b>{profile.fullName}.</b> Nice to meet you!</span>}
                                 </li>
+                                <li className="about-user">
+                                    {profile.aboutMe}
+                                </li>
                             </ul>
                         </div>
                     </div>

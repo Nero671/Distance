@@ -1,9 +1,21 @@
-import React from "react";
+import React, {useEffect, useState} from "react";
 import "./header.css";
 import Search from "../../image/search.svg";
 import User from "../../image/user.svg";
+import {profileAPI} from "../../api/Api";
 
 export const Header = (props) => {
+
+    const [photo, setPhoto] = useState(User);
+
+
+    profileAPI.getUserProfile(24359)
+        .then(response => {
+            setPhoto(response.data.photos.small)
+        })
+
+
+
     return (
         <header>
             <div className="container">
@@ -16,7 +28,7 @@ export const Header = (props) => {
                         { props.isAuth
                             ?
                             <div className="user">
-                                <img src={User} alt="Avatar" className="user-avatar" />
+                                <img src={photo} alt="Avatar" className="user-avatar" />
                                 <span className="user-name">
                                   {props.login} - <button onClick={props.logout}>Log out</button>
                                 </span>

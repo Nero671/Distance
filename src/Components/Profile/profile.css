@@ -35,6 +35,12 @@
 
 .post-user__img-wrapper {
     width: 85px;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    overflow: hidden;
 }
 
 .post-user__img {
@@ -96,4 +102,32 @@
     max-width: 730px;
 }
 
+.about-user__info {
+    margin-top: 10px;
+}
+
+.user-info__list {
+    margin-top: 10px;
+}
+
+.choose-photo {
+    width: 85px;
+    visibility: hidden;
+}
+
+.choose-photo__label {
+    position: absolute;
+    bottom: 1px;
+    height: 40%;
+    cursor: pointer;
+    width: 85px;
+    border-bottom-left-radius: 85%;
+    border-bottom-right-radius: 85%;
+    overflow: hidden;
+}
+
+.choose-photo__label:hover {
+    background: url('../../image/upload.svg') no-repeat center center;
+    background-color: rgb(15%, 15%, 15%, 0.4);
+}
 

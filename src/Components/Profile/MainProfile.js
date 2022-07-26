@@ -1,12 +1,30 @@
-import React from "react";
+import React, {useEffect, useState} from "react";
 import "./profile.css";
 import Gift from "../../image/gift.svg";
 import User from "../../image/user.svg";
 import {UserInfoList} from "./UserInfoList/UserInfoList";
 import {MainProfileStatusContainer} from "./ProfileStatusContainer";
+import {profileAPI} from "../../api/Api";
 
 
-export const MainProfile = ({login}) => {
+export const MainProfile = ({login, savePhoto}) => {
+
+    const [photo, setPhohto] = useState(User);
+
+    useEffect(() => {
+
+        profileAPI.getUserProfile(24359)
+            .then(response => {
+                setPhohto(response.data.photos.large)
+            })
+    });
+
+    const onMainPhotoSelected = (e) => {
+        if (e.target.files[0]) {
+            savePhoto(e.target.files[0]);
+        }
+    }
+
 
     return (
         <div className="user-wrapper">
@@ -14,7 +32,10 @@ export const MainProfile = ({login}) => {
                 <div className="user-post">
                     <div className="user-post__item">
                         <div className="post-user__img-wrapper">
-                            <img className="post-user__img" src={User} alt="User"/>
+                            <img className="post-user__img" src={photo} alt="User"/>
+                            <label className={'choose-photo__label'}>
+                                <input type={'file'} className={'choose-photo'} onChange={onMainPhotoSelected} />
+                            </label>
                         </div>
                     </div>
                     <div className="user-post__item">

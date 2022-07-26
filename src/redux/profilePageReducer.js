@@ -1,8 +1,9 @@
 import {profileAPI, usersAPI} from "../api/Api";
 import {toggleFollowingProgress, unfollowSuccess} from "./usersReducers";
 
-const SET_USER_PROFILE = 'SET_USER_PROFILE';
-const SET_STATUS = 'SET_STATUS';
+const SET_USER_PROFILE = 'profile/SET_USER_PROFILE';
+const SET_STATUS = 'profile/SET_STATUS';
+const SAVE_PHOTO_SUCCESS = 'profile/SAVE_PHOTO_SUCCESS';
 
 let initialState = {
     friendsData: [
@@ -32,6 +33,13 @@ const profilePageReducer = (state = initialState, action) => {
             };
         }
 
+        case SAVE_PHOTO_SUCCESS: {
+            return {
+                ...state,
+                profile: {...state.profile, photos: action.photos}
+            };
+        }
+
         default:
             return state
     }
@@ -39,6 +47,7 @@ const profilePageReducer = (state = initialState, action) => {
 
 export const setUserProfile = (profile) => ({type: SET_USER_PROFILE, profile});
 export const setStatus = (status) => ({type: SET_STATUS, status});
+export const savePhotoSuccess = (photos) => ({type: SAVE_PHOTO_SUCCESS, photos});
 
 export const setUserProfileThunk = (userId) => {
     return async (dispatch) => {
@@ -58,9 +67,14 @@ export const updateStatusThunk = (status) => async (dispatch) => {
 
 export const getStatusThunk = (userId) => async (dispatch) => {
     let response = await profileAPI.updateStatus(userId)
-
     dispatch(setStatus(response.data));
+}
 
+export const savePhoto = (file) => async (dispatch) => {
+    let response = await profileAPI.savePhoto(file);
+    if (response.data.resultCode === 0) {;
+        dispatch(savePhotoSuccess(response.data.data.photos));
+    }
 }
 
 export default profilePageReducer;

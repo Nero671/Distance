@@ -2,14 +2,16 @@ import React, {useEffect, useState} from "react";
 import "./profile.css";
 import Gift from "../../image/gift.svg";
 import User from "../../image/user.svg";
-import {UserInfoList} from "./UserInfoList/UserInfoList";
+import {UserGeneralInfo} from "./UserInfoList/UserGeneralInfo";
 import {MainProfileStatusContainer} from "./ProfileStatusContainer";
 import {profileAPI} from "../../api/Api";
+import {MainProfileFormData} from "./MainProfileFormData";
+import {MainProfileInfo} from "./MainProfileInfo";
 
-
-export const MainProfile = ({login, savePhoto}) => {
+export const MainProfile = ({login, savePhoto, profile, saveProfile}) => {
 
     const [photo, setPhohto] = useState(User);
+    const [editMode, setEditMode] = useState(false);
 
     useEffect(() => {
 
@@ -43,11 +45,17 @@ export const MainProfile = ({login, savePhoto}) => {
                             {login}
                         </h1>
                         <MainProfileStatusContainer />
-                        <ul className="user-info__list">
-                            <UserInfoList />
-                        </ul>
+                        <UserGeneralInfo />
                     </div>
+
                 </div>
+
+                {!profile ? '' : editMode ?
+                    <MainProfileFormData saveProfile={saveProfile} profile={profile}/>
+                    :
+                    <MainProfileInfo goToEditMode={() => {setEditMode(true)}} profile={profile} />
+                }
+
             </div>
             <div className="post">
                 <div className="present">
@@ -68,3 +76,4 @@ export const MainProfile = ({login, savePhoto}) => {
         </div>
     )
 }
+

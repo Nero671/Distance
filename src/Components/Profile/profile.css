@@ -83,6 +83,7 @@
 
 .user-page__post {
     height: auto;
+    position: relative;
 }
 
 .about-user span b {
@@ -104,6 +105,10 @@
 
 .about-user__info {
     margin-top: 10px;
+}
+
+.about-user__info b span {
+    font-weight: 400;
 }
 
 .user-info__list {
@@ -129,5 +134,54 @@
 .choose-photo__label:hover {
     background: url('../../image/upload.svg') no-repeat center center;
     background-color: rgb(15%, 15%, 15%, 0.4);
+}
+
+.looking-job {
+    background: green;
+    padding: 3px 6px;
+    color: #fff;
+    position: absolute;
+    transform: rotate(45deg);
+    top: 10px;
+    right: -50px;
+}
+
+.contacts-item {
+    display: flex;
+    padding: 5px 10px;
+}
+
+.contacts-title {
+    font-weight: 600;
+    margin-right: 6px;
+}
+
+.contacts {
+    font-weight: 600;
+    display: flex;
+}
+
+.contacts::after {
+    content: '';
+    width: 24px;
+    height: 24px;
+    background: url('../../image/contacts.svg');
+    margin-left: 6px;
+}
+
+.contacts:hover {
+    color: #1890FF;
+    cursor: pointer;
+}
+
+.contacts-wrapper {
+    height: 0;
+    overflow: hidden;
+    transition: 1s;
+}
+
+.contacts-wrapper.active {
+    height: auto;
+    transition: 1s;
 }
 

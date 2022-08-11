@@ -224,3 +224,18 @@ input[type="checkbox"] {
     margin-right: 6px;
     cursor: pointer;
 }
+
+.status-wrapper {
+    margin-bottom: 10px;
+}
+
+
+.status {
+    font-weight: 600;
+    color: #0050B3;
+}
+
+.about-user {
+    font-weight: 600;
+    color: #0050B3;
+}

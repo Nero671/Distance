@@ -9,7 +9,6 @@ import {MainProfileFormData} from "./MainProfileFormData";
 import {MainProfileInfo} from "./MainProfileInfo";
 
 export const MainProfile = ({login, savePhoto, profile, saveProfile}) => {
-    console.log(profile)
     const [photo, setPhohto] = useState(User);
     const [editMode, setEditMode] = useState(false);
     const [profileInfo, setProfileInfo] = useState(profile);
@@ -60,7 +59,7 @@ export const MainProfile = ({login, savePhoto, profile, saveProfile}) => {
                 </div>
 
                 {!profileInfo ? '' : editMode ?
-                    <MainProfileFormData profileInfo={profileInfo} saveProfile={saveProfile} profile={profile}/>
+                    <MainProfileFormData profileInfo={profileInfo} saveProfile={saveProfile} profile={profile} goToEditMode={() => {setEditMode(false)}}/>
                     :
                     <MainProfileInfo profileInfo={profileInfo} goToEditMode={() => {setEditMode(true)}} profile={profile} />
                 }

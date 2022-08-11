@@ -87,7 +87,7 @@
 }
 
 .about-user span b {
-    color: #0050B3;
+    color: #000;
 }
 
 .user-page__post:first-of-type {
@@ -159,6 +159,8 @@
 .contacts {
     font-weight: 600;
     display: flex;
+    color: #000;
+    font-size: 22px;
 }
 
 .contacts::after {
@@ -213,6 +215,14 @@
     line-height: 60px !important;
 }
 
+.pure-material-textfield-outlined > input:not(:focus):placeholder-shown + span {
+    line-height: 60px !important;
+}
+
+.about-user__info > .pure-material-textfield-outlined {
+    margin-top: 7px;
+}
+
 .registration > ul > .about-user__info > b > span {
     color: #1890FF;
 }
@@ -238,4 +248,8 @@ input[type="checkbox"] {
 .about-user {
     font-weight: 600;
     color: #0050B3;
+}
+
+.contacts-form__item b {
+    color: #000;
 }

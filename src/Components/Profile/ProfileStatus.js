@@ -2,7 +2,7 @@ import React, {useEffect, useState} from "react";
 import "./profile.css";
 import {profileAPI} from "../../api/Api";
 
-const  ProfileStatus = (props) => {
+const ProfileStatus = (props) => {
     console.log(props.status)
     let [editMode, setEditMode] = useState(false);
     let [status, setStatus] = useState(props.status);

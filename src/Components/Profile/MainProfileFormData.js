@@ -3,9 +3,7 @@ import {ErrorMessage, Field, Form, Formik} from "formik";
 import "./profile.css";
 import {Contact} from "./Profile";
 
-export const MainProfileFormData = ({profile, saveProfile, profileInfo}) => {
-
-    console.log(profileInfo)
+export const MainProfileFormData = ({goToEditMode, saveProfile, profileInfo}) => {
     const contactsWrapper = React.createRef();
 
     const showContacts = () => {
@@ -15,10 +13,10 @@ export const MainProfileFormData = ({profile, saveProfile, profileInfo}) => {
     return (
         <>
             <Formik
-                initialValues={{aboutMe: '', lookingForAJobDescription: '', lookingForAJob: false, fullName: ''}}
+                initialValues={{aboutMe: profileInfo.aboutMe, lookingForAJobDescription: profileInfo.lookingForAJobDescription, lookingForAJob: false, fullName: profileInfo.fullName, contacts: ''}}
                 onSubmit={(values) => {
                     saveProfile(values)
-                    console.log(values)
+                    goToEditMode(false)
                 }}
             >
                 {() => (
@@ -56,20 +54,23 @@ export const MainProfileFormData = ({profile, saveProfile, profileInfo}) => {
                                     <span className={'after-input__span'}>My skills</span>
                                 </label>
                             </li>
-                            {/*<li className={"about-user__info about-user__contacts"}>*/}
-                            {/*    <div className={'contacts'} onClick={showContacts}>Contacts</div>*/}
-                            {/*    <div className={'contacts-wrapper'} ref={contactsWrapper}>*/}
-                            {/*        {Object.keys(profile.contacts).map(key => {*/}
-                            {/*            if (profile.contacts[key]) {*/}
-                            {/*                return <Contact key={key} contactTitle={key} contactValue={profile.contacts[key]} />*/}
-                            {/*            }*/}
-                            {/*        })}*/}
-                            {/*        <label className="pure-material-textfield-outlined">*/}
-                            {/*            <Field type={"text"} name={"contacts"} placeholder=" " id="contacts" className="form__input" />*/}
-                            {/*            <span>Contacts</span>*/}
-                            {/*        </label>*/}
-                            {/*    </div>*/}
-                            {/*</li>*/}
+                            <li className={"about-user__info about-user__contacts"}>
+                                <div className={'contacts'} onClick={showContacts}>Contacts</div>
+                                <div className={'contacts-wrapper'} ref={contactsWrapper}>
+                                    {Object.keys(profileInfo.contacts).map(key => {
+                                        return <div className={'contacts-form__item'}>
+                                            <b>{key}:
+                                                <label className="pure-material-textfield-outlined">
+                                                    <Field type={"text"} name={'contacts.' + key} placeholder=" " id="contacts" className="form__input edit-form__input" />
+                                                    <span className={'after-input__span'}>{key}</span>
+                                                </label>
+                                            </b>
+                                        </div>
+
+                                    })}
+                                </div>
+
+                            </li>
                         </ul>
                     </Form>
                 )}

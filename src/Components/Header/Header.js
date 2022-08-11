@@ -7,6 +7,16 @@ import {profileAPI} from "../../api/Api";
 export const Header = (props) => {
 
     const [photo, setPhoto] = useState(User);
+    const [profileInfo, setProfileInfo] = useState(props.profile);
+    console.log(profileInfo)
+    useEffect(() => {
+
+        profileAPI.getUserProfile(24359)
+            .then(response => {
+                setProfileInfo(response.data);
+            });
+
+    },[props.profile]);
 
 
     profileAPI.getUserProfile(24359)
@@ -30,7 +40,7 @@ export const Header = (props) => {
                             <div className="user">
                                 <img src={photo} alt="Avatar" className="user-avatar" />
                                 <span className="user-name">
-                                  {props.login} - <button onClick={props.logout}>Log out</button>
+                                  {profileInfo && profileInfo.fullName} - <button onClick={props.logout}>Log out</button>
                                 </span>
                             </div>
                             :

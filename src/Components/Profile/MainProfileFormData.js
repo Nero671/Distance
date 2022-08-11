@@ -3,8 +3,9 @@ import {ErrorMessage, Field, Form, Formik} from "formik";
 import "./profile.css";
 import {Contact} from "./Profile";
 
-export const MainProfileFormData = ({profile, saveProfile}) => {
+export const MainProfileFormData = ({profile, saveProfile, profileInfo}) => {
 
+    console.log(profileInfo)
     const contactsWrapper = React.createRef();
 
     const showContacts = () => {
@@ -24,17 +25,24 @@ export const MainProfileFormData = ({profile, saveProfile}) => {
                     <Form className="registration" action="index.html" method="post">
                         <ul className={"user-info__list"}>
                             <li>
-                                <button type={'submit'} name="button">Save</button>
+                                <button type={'submit'} name="button" className={'btn-edit btn-save'}>Save</button>
+                            </li>
+                            <li className={"about-user__info about-user__work-info"}>
+                                {profileInfo.fullName ? <b>Your name: <span>{profileInfo.fullName}</span></b> : ''}
+                                <label className="pure-material-textfield-outlined">
+                                    <Field type={"text"} name={"fullName"} placeholder=" " id="fullName" className="form__input edit-form__input" />
+                                    <span className={'after-input__span'}>Full Name</span>
+                                </label>
                             </li>
                             <li className={"about-user__info"}>
-                                {profile.aboutMe ? <b>About me: <span>{profile.aboutMe}</span></b> : ''}
+                                {profileInfo.aboutMe ? <b>About me: <span>{profileInfo.aboutMe}</span></b> : ''}
                                 <label className="pure-material-textfield-outlined">
-                                    <Field type={"text"} name={"aboutMe"} placeholder=" " id="aboutMe" className="form__input" />
-                                    <span>About</span>
+                                    <Field type={"text"} name={"aboutMe"} placeholder=" " id="aboutMe" className=" edit-form__input" />
+                                    <span className={'after-input__span'}>About me</span>
                                 </label>
                             </li>
                             <li className={"about-user__work-info"}>
-                                {profile.lookingForAJob ? <div className={'looking-job'}>
+                                {profileInfo.lookingForAJob ? <div className={'looking-job'}>
                                     Looking for a job
                                 </div> : ''}
                                 <label>
@@ -42,17 +50,10 @@ export const MainProfileFormData = ({profile, saveProfile}) => {
                                 </label>
                             </li>
                             <li className={"about-user__info about-user__work-info"}>
-                                {profile.lookingForAJobDescription ? <b>Job description: <span>{profile.lookingForAJobDescription}</span></b> : ''}
+                                {profileInfo.lookingForAJobDescription ? <b>Your job skills: <span>{profileInfo.lookingForAJobDescription}</span></b> : ''}
                                 <label className="pure-material-textfield-outlined">
-                                    <Field type={"text"} name={"lookingForAJobDescription"} placeholder=" " id="lookingForAJobDescription" className="form__input" />
-                                    <span>jobDescription</span>
-                                </label>
-                            </li>
-                            <li className={"about-user__info about-user__work-info"}>
-                                fullName
-                                <label className="pure-material-textfield-outlined">
-                                    <Field type={"text"} name={"fullName"} placeholder=" " id="fullName" className="form__input" />
-                                    <span>jobDescription</span>
+                                    <Field type={"text"} name={"lookingForAJobDescription"} placeholder=" " id="lookingForAJobDescription" className="form__input edit-form__input" />
+                                    <span className={'after-input__span'}>My skills</span>
                                 </label>
                             </li>
                             {/*<li className={"about-user__info about-user__contacts"}>*/}

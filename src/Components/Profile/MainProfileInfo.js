@@ -1,8 +1,11 @@
 import React, {useEffect, useState} from "react";
 import "./profile.css";
 import {Contact} from "./Profile";
+import {profileAPI} from "../../api/Api";
 
-export const MainProfileInfo = ({profile, goToEditMode}) => {
+export const MainProfileInfo = ({profile, goToEditMode, profileInfo}) => {
+
+
 
     const contactsWrapper = React.createRef();
 
@@ -13,25 +16,25 @@ export const MainProfileInfo = ({profile, goToEditMode}) => {
     return (
         <ul className="user-info__list">
             <li>
-                <button onClick={goToEditMode}>Edit</button>
+                <button className={'btn-edit'} onClick={goToEditMode}>Edit</button>
             </li>
             <li className="about-user__info">
-                {profile.aboutMe ? <b>About me: <span>{profile.aboutMe}</span></b> : ''}
+                {profileInfo.aboutMe ? <b>About me: <span>{profileInfo.aboutMe}</span></b> : ''}
             </li>
             <li className="about-user__work-info">
-                {profile.lookingForAJob ? <div className={'looking-job'}>
+                {profileInfo.lookingForAJob ? <div className={'looking-job'}>
                     Looking for a job
                 </div> : ''}
             </li>
             <li className="about-user__info about-user__work-info">
-                {profile.lookingForAJobDescription ? <b>Job description: <span>{profile.lookingForAJobDescription}</span></b> : ''}
+                {profileInfo.lookingForAJobDescription ? <b>My skills: <span>{profileInfo.lookingForAJobDescription}</span></b> : ''}
             </li>
             <li className="about-user__info about-user__contacts">
                 <div className={'contacts'} onClick={showContacts}>Contacts</div>
                 <div className={'contacts-wrapper'} ref={contactsWrapper}>
-                    {Object.keys(profile.contacts).map(key => {
-                        if (profile.contacts[key]) {
-                            return <Contact key={key} contactTitle={key} contactValue={profile.contacts[key]} />
+                    {Object.keys(profileInfo.contacts).map(key => {
+                        if (profileInfo.contacts[key]) {
+                            return <Contact key={key} contactTitle={key} contactValue={profileInfo.contacts[key]} />
                         }
                     })}
                 </div>

@@ -4,7 +4,6 @@ import {updateStatusThunk} from "../../redux/profilePageReducer";
 import ProfileStatus from "./ProfileStatus";
 
 const MainProfileStatusWrapper = (props) =>  {
-
     return (
         <ProfileStatus
             {...props}

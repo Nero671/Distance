@@ -17,9 +17,9 @@ export const Users = (props) => {
     }
 
     return (
-        <div className="create-post users-block">
-            <div className="header-post">
-                <h1 className="title">Users</h1>
+        <div className={"create-post users-block"}>
+            <div className={"header-post"}>
+                <h1 className={"title"}>Users</h1>
             </div>
             <div className={styles.userList}>
                 {props.users.map(item =>

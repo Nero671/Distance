@@ -9,17 +9,26 @@ import {MainProfileFormData} from "./MainProfileFormData";
 import {MainProfileInfo} from "./MainProfileInfo";
 
 export const MainProfile = ({login, savePhoto, profile, saveProfile}) => {
-
+    console.log(profile)
     const [photo, setPhohto] = useState(User);
     const [editMode, setEditMode] = useState(false);
-
+    const [profileInfo, setProfileInfo] = useState(profile);
+    console.log(profileInfo)
     useEffect(() => {
 
         profileAPI.getUserProfile(24359)
             .then(response => {
+                setProfileInfo(response.data);
+            });
+
+    },[profile]);
+
+    useEffect(() => {
+        profileAPI.getUserProfile(24359)
+            .then(response => {
                 setPhohto(response.data.photos.large)
             })
-    });
+   });
 
     const onMainPhotoSelected = (e) => {
         if (e.target.files[0]) {
@@ -42,7 +51,7 @@ export const MainProfile = ({login, savePhoto, profile, saveProfile}) => {
                     </div>
                     <div className="user-post__item">
                         <h1 className="user-post__name">
-                            {login}
+                            {profileInfo && profileInfo.fullName}
                         </h1>
                         <MainProfileStatusContainer />
                         <UserGeneralInfo />
@@ -50,10 +59,10 @@ export const MainProfile = ({login, savePhoto, profile, saveProfile}) => {
 
                 </div>
 
-                {!profile ? '' : editMode ?
-                    <MainProfileFormData saveProfile={saveProfile} profile={profile}/>
+                {!profileInfo ? '' : editMode ?
+                    <MainProfileFormData profileInfo={profileInfo} saveProfile={saveProfile} profile={profile}/>
                     :
-                    <MainProfileInfo goToEditMode={() => {setEditMode(true)}} profile={profile} />
+                    <MainProfileInfo profileInfo={profileInfo} goToEditMode={() => {setEditMode(true)}} profile={profile} />
                 }
 
             </div>

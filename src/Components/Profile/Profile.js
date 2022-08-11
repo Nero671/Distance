@@ -47,7 +47,7 @@ export const Profile = ({ friend, profile, posts, status }) => {
                             </div> : ''}
                         </li>
                         <li className="about-user__info about-user__work-info">
-                             {profile.lookingForAJobDescription ? <b>Job description: <span>{profile.lookingForAJobDescription}</span></b> : ''}
+                             {profile.lookingForAJobDescription ? <b>My skills: <span>{profile.lookingForAJobDescription}</span></b> : ''}
                         </li>
                         <li className="about-user__info about-user__contacts">
                             <div className={'contacts'} onClick={showContacts}>Contacts</div>

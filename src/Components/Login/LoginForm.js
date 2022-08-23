@@ -5,15 +5,14 @@ import {connect} from "react-redux";
 import {login} from "../../redux/auth-reducer";
 import {Navigate} from "react-router-dom";
 
-const LoginForm = ({login, isAuth}) => {
-
+const LoginForm = ({login, isAuth, captchaUrl}) => {
     if (isAuth) {
         return <Navigate to="/profile"/>
     }
 
     return (
         <Formik
-            initialValues={{email: "", password: "", rememberMe: false}}
+            initialValues={{email: "", password: "", rememberMe: false, captcha: ""}}
             validate={values => {
                 const errors = {};
                 if (!values.email) {
@@ -26,8 +25,7 @@ const LoginForm = ({login, isAuth}) => {
                 return errors;
             }}
             onSubmit={(values, {setSubmitting, setStatus}) => {
-                console.log(setStatus)
-                login(values.email, values.password, values.rememberMe, setStatus);
+                login(values.email, values.password, values.rememberMe, values.captcha, setStatus);
                 setSubmitting(false);
             }}
             validationSchema={loginFormSchema}
@@ -48,6 +46,12 @@ const LoginForm = ({login, isAuth}) => {
                         {status}
                     </div>
 
+                    {captchaUrl && <img src={captchaUrl} alt="" />}
+                    {captchaUrl && <label className="pure-material-textfield-outlined">
+                        <Field  type={"text"} name={"captcha"} placeholder=" " id="captcha" className="form__input" />
+                        <span>Captcha</span>
+                    </label>}
+
                     {/*<label className="pure-material-textfield-outlined">*/}
                     {/*    <Field type={"password"} name={"confirmPassword"} placeholder=" " id="confirmPassword" className="form__input" />*/}
                     {/*    <span>Confirm Password</span>*/}
@@ -67,7 +71,8 @@ const LoginForm = ({login, isAuth}) => {
 }
 
 const mapStateToProps = (state) => ({
-    isAuth: state.auth.isAuth
+    isAuth: state.auth.isAuth,
+    captchaUrl: state.auth.captchaUrl
 })
 
 export const LoginFormContainer = connect(mapStateToProps, {login}) (LoginForm)

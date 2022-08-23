@@ -3,10 +3,8 @@ import "./profile.css";
 import {profileAPI} from "../../api/Api";
 
 const ProfileStatus = (props) => {
-    console.log(props.status)
     let [editMode, setEditMode] = useState(false);
     let [status, setStatus] = useState(props.status);
-    console.log(status)
     useEffect(() => {
 
         profileAPI.getStastus(24359)

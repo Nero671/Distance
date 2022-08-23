@@ -8,7 +8,6 @@ export const Header = (props) => {
 
     const [photo, setPhoto] = useState(User);
     const [profileInfo, setProfileInfo] = useState(props.profile);
-    console.log(profileInfo)
     useEffect(() => {
 
         profileAPI.getUserProfile(24359)

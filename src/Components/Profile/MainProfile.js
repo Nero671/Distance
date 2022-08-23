@@ -12,7 +12,6 @@ export const MainProfile = ({login, savePhoto, profile, saveProfile}) => {
     const [photo, setPhohto] = useState(User);
     const [editMode, setEditMode] = useState(false);
     const [profileInfo, setProfileInfo] = useState(profile);
-    console.log(profileInfo)
     useEffect(() => {
 
         profileAPI.getUserProfile(24359)

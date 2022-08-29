@@ -9,6 +9,7 @@ import {UsersContainer} from "../Users/UsersContainer";
 import {MainProfileContainer} from "../Profile/MainProfileContainer";
 import {Login} from "../Login/Login";
 import Preloader from "../Common/Preloader/Preloader";
+import {NotFound} from "../404/404";
 
 // const MainProfileContainer = React.lazy(() => import('../Profile/MainProfileContainer'));
 
@@ -43,14 +44,13 @@ export const Main = ({isAuth, getAuthUserData}) => {
                                         element={<UsersContainer />}
                                         />
 
-                                            <Route path="/login"
-                                                   element={<Login />}
-                                            />
+                                        <Route path="/login"
+                                               element={<Login />}
+                                        />
 
-
-                                        {/*<Route path="/userProfile/*"*/}
-                                        {/*       element={<ProfileContainer />}*/}
-                                        {/*/>*/}
+                                        <Route path="*"
+                                               element={<NotFound />}
+                                        />
                                     </Routes>
                                 </Suspense>
                                 <MainProfileContainer />

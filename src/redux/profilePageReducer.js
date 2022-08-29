@@ -59,10 +59,15 @@ export const setUserProfileThunk = (userId) => {
 }
 
 export const updateStatusThunk = (status) => async (dispatch) => {
-    let response = await profileAPI.updateStatus(status);
-    if (response.data.resultCode === 0) {;
-        dispatch(setStatus(status));
+    try {
+        let response = await profileAPI.updateStatus(status);
+        if (response.data.resultCode === 0) {;
+            dispatch(setStatus(status));
+        }
+    } catch (error) {
+        console.error(error)
     }
+
 }
 
 export const getStatusThunk = (userId) => async (dispatch) => {

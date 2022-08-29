@@ -89,3 +89,17 @@ li {
   font-weight: 600;
   text-transform: uppercase;
 }
+
+.not-found {
+  text-align: center;
+  margin-top: 5%;
+  color: #1890FF;
+}
+
+.not-found h1 {
+  font-size: 110px;
+}
+
+.not-found div {
+  font-size: 60px;
+}

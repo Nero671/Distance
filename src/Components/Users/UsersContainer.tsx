@@ -15,15 +15,37 @@ import {
     getTotalUsersCount,
     getUsers
 } from "../../redux/users-selectors";
+import {UserType} from "../../type/type";
+import {AppStateType} from "../../redux/redux-store";
+import {bool} from "yup";
 
 
-class UsersAPIComponent extends React.Component {
+type MapStatePropsType = {
+    currentPage: number,
+    pageSize: number,
+    totalUsersCount: number,
+    users: Array<UserType>,
+    toggleFollowingProgress: boolean | number,
+    followingInProgress: Array<number>,
+    isFetching: boolean
+}
+
+type MapDispatchPropsType = {
+    getUsersThunkCreator: (currentPage: number, pageSize: number) => void,
+    setCurrentPage: (page: number) => void,
+    unfollow: (userId: number) => void,
+    follow: (userId: number) => void,
+}
+
+type PropsType = MapStatePropsType & MapDispatchPropsType;
+
+class UsersAPIComponent extends React.Component<PropsType> {
 
     componentDidMount() {
         this.props.getUsersThunkCreator(this.props.currentPage, this.props.pageSize);
     }
 
-    onPageChanged = (page) => {
+    onPageChanged = (page: number) => {
         this.props.setCurrentPage(page);
         this.props.getUsersThunkCreator(page, this.props.pageSize);
         // this.props.setCurrentPage(page);
@@ -48,6 +70,7 @@ class UsersAPIComponent extends React.Component {
                     follow={this.props.follow}
                     unfollow={this.props.unfollow}
                     followingInProgress={this.props.followingInProgress}
+                    isFetching={this.props.isFetching}
                 />
             </>
         )
@@ -67,7 +90,7 @@ class UsersAPIComponent extends React.Component {
 //
 // }
 
-let mapStateToProps = (state) => {
+let mapStateToProps = (state: AppStateType): MapStatePropsType => {
     return {
         users: getUsers(state),
         pageSize: getPageSize(state),
@@ -109,10 +132,12 @@ let mapStateToProps = (state) => {
 //
 // }
 
-export const UsersContainer = connect(mapStateToProps, {
+// @ts-ignore
+export const UsersContainer = connect<MapStatePropsType, MapDispatchPropsType, AppStateType>(mapStateToProps, {
     follow,
     unfollow,
     setCurrentPage,
     toggleFollowingProgress,
     getUsersThunkCreator,
-}) (UsersAPIComponent)
+}) // @ts-ignore
+(UsersAPIComponent)

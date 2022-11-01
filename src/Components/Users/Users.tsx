@@ -1,12 +1,24 @@
-import React from "react";
+import React, {FC} from "react";
 import styles from "./users.module.css";
-import UnknownUser from "../../image/user.svg";
 import Preloader from "../Common/Preloader/Preloader";
-import {NavLink} from "react-router-dom";
 import {Paginator} from "../Common/Paginator/Paginator";
 import {User} from "./User";
+import {UserType} from "../../type/type";
 
-export const Users = (props) => {
+type PropsType = {
+    totalUsersCount: number,
+    pageSize: number,
+    currentPage: number,
+    onPageChanged: (pageNumber: number) => void,
+    portionSize?: number,
+    users: Array<UserType>,
+    followingInProgress: Array<number>,
+    unfollow: (userId: number) => void,
+    follow: (userId: number) => void,
+    isFetching: boolean
+}
+
+export const Users: FC<PropsType> = (props) => {
 
     let pagesCount = Math.ceil(props.totalUsersCount / props.pageSize);
 

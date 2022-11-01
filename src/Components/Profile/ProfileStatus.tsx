@@ -1,8 +1,13 @@
-import React, {useEffect, useState} from "react";
+import React, {FC, useEffect, useState} from "react";
 import "./profile.css";
 import {profileAPI} from "../../api/Api";
 
-const ProfileStatus = (props) => {
+type PropsType = {
+    status: string,
+    updateStatusThunk: (status: string) => void
+}
+
+const ProfileStatus: FC<PropsType> = (props) => {
     let [editMode, setEditMode] = useState(false);
     let [status, setStatus] = useState(props.status);
     useEffect(() => {
@@ -24,6 +29,7 @@ const ProfileStatus = (props) => {
         props.updateStatusThunk(status);
     }
 
+    // @ts-ignore
     const onStatusChange = (e) => {
         setStatus(e.target.value)
     }

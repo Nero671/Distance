@@ -6,7 +6,7 @@ import profilePageReducer from "./profilePageReducer";
 import usersReducers from "./usersReducers";
 import authReducer from "./auth-reducer";
 
-let reducers = combineReducers({
+let rootReducer = combineReducers({
     feedPage: feedPageReducer,
     dialogsPage: dialogsPageReducer,
     profilePage: profilePageReducer,
@@ -14,8 +14,13 @@ let reducers = combineReducers({
     auth: authReducer
 });
 
-let store = legacy_createStore(reducers, applyMiddleware(thunkMiddleware));
+type RootReducerType = typeof rootReducer; //создает тип на основе rootReducer
+export type AppStateType = ReturnType<RootReducerType>; //определяет сам то, что возвращается
 
+
+let store = legacy_createStore(rootReducer, applyMiddleware(thunkMiddleware));
+
+// @ts-ignore
 window.store = store;
 
 export default store;

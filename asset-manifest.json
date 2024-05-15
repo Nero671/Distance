@@ -1,0 +1,37 @@
+{
+  "files": {
+    "main.css": "/distance/static/css/main.8bb762b5.css",
+    "main.js": "/distance/static/js/main.eb785478.js",
+    "static/js/787.7488bb60.chunk.js": "/distance/static/js/787.7488bb60.chunk.js",
+    "static/media/user.svg": "/distance/static/media/user.27f70581ddbc7710ee7752f936b1cd9b.svg",
+    "static/media/loader.svg": "/distance/static/media/loader.be9c626689f1e2fecf22e0f085d0f549.svg",
+    "static/media/feelings.svg": "/distance/static/media/feelings.9c834c5629a8f612fa7dff4d540a2edd.svg",
+    "static/media/profile.svg": "/distance/static/media/profile.6329ab3e26b8e3ed327423bfff171309.svg",
+    "static/media/messages.svg": "/distance/static/media/messages.5028724f2dd9600957ac386ba404347a.svg",
+    "static/media/postLike.svg": "/distance/static/media/postLike.27e5685b156a3ff40fb198674b00ba27.svg",
+    "static/media/photo.svg": "/distance/static/media/photo.1b82a9767333099237be424083141228.svg",
+    "static/media/comment.svg": "/distance/static/media/comment.aadd722a654d44122c456815ab56f17d.svg",
+    "static/media/music.svg": "/distance/static/media/music.f8459f69f0b020f2b5cb0c8b6d86ca7d.svg",
+    "static/media/tagFriend.svg": "/distance/static/media/tagFriend.9c7ccaf7cf17e71f60359f4b6f51baa3.svg",
+    "static/media/like.svg": "/distance/static/media/like.4927958d12c5029fff883adf5112b3b4.svg",
+    "static/media/gift.svg": "/distance/static/media/gift.e71700eba0903db48a0ff1354f122701.svg",
+    "static/media/share.svg": "/distance/static/media/share.937a994629a42b06a4fccde8ec8aadd5.svg",
+    "static/media/news.svg": "/distance/static/media/news.c2817ecf18de8d621673ada1394158fc.svg",
+    "static/media/search.svg": "/distance/static/media/search.e3427bd8258a3250d94a6986ba8765a6.svg",
+    "static/media/settings.svg": "/distance/static/media/settings.28952a55d5100842cee0f45bfc469c6e.svg",
+    "static/media/users.svg": "/distance/static/media/users.4521958654ab7184ea9a7e3256447732.svg",
+    "index.html": "/distance/index.html",
+    "static/media/addFile.svg": "/distance/static/media/addFile.6824ff0cfaad76350785.svg",
+    "static/media/emoji.svg": "/distance/static/media/emoji.171db9155e8e056bce6e9e3d37ca33ac.svg",
+    "static/media/contacts.svg": "/distance/static/media/contacts.b3259a5ff4252924962b.svg",
+    "static/media/upload.svg": "/distance/static/media/upload.e898d37becde26e19d77.svg",
+    "static/media/send.svg": "/distance/static/media/send.94f1ea947648a0bdf6e8d104841096cb.svg",
+    "main.8bb762b5.css.map": "/distance/static/css/main.8bb762b5.css.map",
+    "main.eb785478.js.map": "/distance/static/js/main.eb785478.js.map",
+    "787.7488bb60.chunk.js.map": "/distance/static/js/787.7488bb60.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.8bb762b5.css",
+    "static/js/main.eb785478.js"
+  ]
+}

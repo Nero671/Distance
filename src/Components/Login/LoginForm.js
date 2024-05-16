@@ -12,11 +12,12 @@ const LoginForm = ({login, isAuth, captchaUrl}) => {
 
     return (
         <Formik
-            initialValues={{email: "", password: "", rememberMe: false, captcha: ""}}
+            initialValues={{email: "emili.smit.91@mail.ru", password: "qwerty123", rememberMe: false, captcha: ""}}
             validate={values => {
                 const errors = {};
                 if (!values.email) {
                     errors.email = 'Required'
+                    console.log(values.email)
                 } else if (
                     !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(values.email)
                 ) {
